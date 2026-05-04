@@ -1,0 +1,1466 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		097C02859EDD833D8DAA22D5 /* libPods-ShoppingApp-ShoppingAppWidgetExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 17870C7B856396561F9DC364 /* libPods-ShoppingApp-ShoppingAppWidgetExtension.a */; };
+		3F2367E62C1B537600B1F054 /* BridgeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2367E52C1B537600B1F054 /* BridgeManager.swift */; };
+		3F2367EB2C1B555400B1F054 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2367EA2C1B555400B1F054 /* AppDelegate.swift */; };
+		3F2367EC2C1B923E00B1F054 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 3F2367E92C1B552900B1F054 /* main.jsbundle */; };
+		3F2367F32C1BBD0000B1F054 /* BottomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2367F22C1BBD0000B1F054 /* BottomTabView.swift */; };
+		3F2367F52C1BD95000B1F054 /* CartTotal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2367F42C1BD95000B1F054 /* CartTotal.swift */; };
+		3F2367FD2C1D4A3A00B1F054 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F2367FC2C1D4A3A00B1F054 /* WidgetKit.framework */; };
+		3F2367FF2C1D4A3A00B1F054 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F2367FE2C1D4A3A00B1F054 /* SwiftUI.framework */; };
+		3F2368022C1D4A3A00B1F054 /* ShoppingAppWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2368012C1D4A3A00B1F054 /* ShoppingAppWidgetBundle.swift */; };
+		3F2368042C1D4A3A00B1F054 /* ShoppingAppWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2368032C1D4A3A00B1F054 /* ShoppingAppWidgetLiveActivity.swift */; };
+		3F2368062C1D4A3A00B1F054 /* ShoppingAppWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2368052C1D4A3A00B1F054 /* ShoppingAppWidget.swift */; };
+		3F2368082C1D4A3A00B1F054 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2368072C1D4A3A00B1F054 /* AppIntent.swift */; };
+		3F23680A2C1D4A3C00B1F054 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F2368092C1D4A3C00B1F054 /* Assets.xcassets */; };
+		3F23680E2C1D4A3C00B1F054 /* ShoppingAppWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3F2367FB2C1D4A3900B1F054 /* ShoppingAppWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3F7AA2222C17BD3900C6AA7D /* CartService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7AA2212C17BD3900C6AA7D /* CartService.swift */; };
+		3F7AA2252C17C68900C6AA7D /* ShoppingHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7AA2242C17C68900C6AA7D /* ShoppingHeader.swift */; };
+		3F7AA2272C17C73900C6AA7D /* CategoriesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7AA2262C17C73900C6AA7D /* CategoriesList.swift */; };
+		3F7AA2292C17C9A700C6AA7D /* BannerPromotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7AA2282C17C9A700C6AA7D /* BannerPromotion.swift */; };
+		3F7AA22B2C17CA0400C6AA7D /* ProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7AA22A2C17CA0400C6AA7D /* ProductDetailView.swift */; };
+		3F7AA22D2C17CAA100C6AA7D /* ProductItemContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7AA22C2C17CAA100C6AA7D /* ProductItemContent.swift */; };
+		3F7AA2302C17CB4F00C6AA7D /* Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7AA22F2C17CB4F00C6AA7D /* Methods.swift */; };
+		3F7AA2322C17F51C00C6AA7D /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7AA2312C17F51C00C6AA7D /* CartView.swift */; };
+		3F7AA2342C17F64500C6AA7D /* CustomBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7AA2332C17F64500C6AA7D /* CustomBackButton.swift */; };
+		3F7AA2362C17FF3900C6AA7D /* CartItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7AA2352C17FF3900C6AA7D /* CartItemView.swift */; };
+		3F7AA2382C180D0E00C6AA7D /* CartIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7AA2372C180D0E00C6AA7D /* CartIcon.swift */; };
+		3F7AA23A2C18BA0300C6AA7D /* ModuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7AA2392C18BA0300C6AA7D /* ModuleViewController.swift */; };
+		3F7AA23C2C18BC2600C6AA7D /* ModuleViewControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7AA23B2C18BC2600C6AA7D /* ModuleViewControllerWrapper.swift */; };
+		3F7AA23E2C18BC9500C6AA7D /* Module.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F7AA23D2C18BC9500C6AA7D /* Module.storyboard */; };
+		3F81FA2E2C9A1CEF00202C01 /* ShoppingWatchExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F81FA2D2C9A1CEF00202C01 /* ShoppingWatchExtension.swift */; };
+		3F81FA302C9A1CEF00202C01 /* ShoppingWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F81FA2F2C9A1CEF00202C01 /* ShoppingWatch.swift */; };
+		3F81FA3C2C9A1E1700202C01 /* ShoppingWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F81FA3B2C9A1E1700202C01 /* ShoppingWatchApp.swift */; };
+		3F9DF3562C28FA2C00AB9E97 /* PaymentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9DF3552C28FA2C00AB9E97 /* PaymentHandler.swift */; };
+		3F9DF3582C28FA4700AB9E97 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9DF3572C28FA4700AB9E97 /* Configuration.swift */; };
+		3FB234EE2C13BB5A00E2AAF1 /* ShoppingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB234ED2C13BB5A00E2AAF1 /* ShoppingApp.swift */; };
+		3FB234F32C13BB5A00E2AAF1 /* ShoppingApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3FB234F12C13BB5A00E2AAF1 /* ShoppingApp.xcdatamodeld */; };
+		3FB234F52C13BB5A00E2AAF1 /* ProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB234F42C13BB5A00E2AAF1 /* ProductsView.swift */; };
+		3FB234F72C13BB5B00E2AAF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FB234F62C13BB5B00E2AAF1 /* Assets.xcassets */; };
+		3FB235052C13BB5C00E2AAF1 /* ShoppingAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB235042C13BB5C00E2AAF1 /* ShoppingAppTests.swift */; };
+		3FB2350F2C13BB5C00E2AAF1 /* ShoppingAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB2350E2C13BB5C00E2AAF1 /* ShoppingAppUITests.swift */; };
+		3FB235112C13BB5C00E2AAF1 /* ShoppingAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB235102C13BB5C00E2AAF1 /* ShoppingAppUITestsLaunchTests.swift */; };
+		3FB235232C15F54300E2AAF1 /* ShoppingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB235222C15F54300E2AAF1 /* ShoppingService.swift */; };
+		3FB235292C16093D00E2AAF1 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB235282C16093D00E2AAF1 /* Product.swift */; };
+		3FB2352C2C1626BC00E2AAF1 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB2352B2C1626BC00E2AAF1 /* constants.swift */; };
+		3FDA48892C166B9000EA4A1D /* LaunchView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FDA48882C166B9000EA4A1D /* LaunchView.storyboard */; };
+		3FEF43AD2C1E4AC900F3A1B2 /* ProductItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEF43AC2C1E4AC900F3A1B2 /* ProductItem.swift */; };
+		46FAE1DB2A21FA4614FC3E02 /* libPods-ShoppingApp-ShoppingAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C8044F539DC759C57B13DCF4 /* libPods-ShoppingApp-ShoppingAppTests.a */; };
+		69C71081843F5E6358A2FAF2 /* libPods-ShoppingApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B748FC1BB0B90145B6EC95A /* libPods-ShoppingApp.a */; };
+		A7264287962B5CD415461355 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 84265438F840CA3C41E5761C /* PrivacyInfo.xcprivacy */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3F23680C2C1D4A3C00B1F054 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3FB234E22C13BB5A00E2AAF1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3F2367FA2C1D4A3900B1F054;
+			remoteInfo = ShoppingAppWidgetExtension;
+		};
+		3FB235012C13BB5C00E2AAF1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3FB234E22C13BB5A00E2AAF1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3FB234E92C13BB5A00E2AAF1;
+			remoteInfo = ShoppingApp;
+		};
+		3FB2350B2C13BB5C00E2AAF1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3FB234E22C13BB5A00E2AAF1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3FB234E92C13BB5A00E2AAF1;
+			remoteInfo = ShoppingApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3F23680F2C1D4A3D00B1F054 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				3F23680E2C1D4A3C00B1F054 /* ShoppingAppWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		17870C7B856396561F9DC364 /* libPods-ShoppingApp-ShoppingAppWidgetExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ShoppingApp-ShoppingAppWidgetExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		39D7045491DD6BF329A3DF78 /* Pods-ShoppingApp-ShoppingAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingApp-ShoppingAppTests.release.xcconfig"; path = "Target Support Files/Pods-ShoppingApp-ShoppingAppTests/Pods-ShoppingApp-ShoppingAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		3B748FC1BB0B90145B6EC95A /* libPods-ShoppingApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ShoppingApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F2367E52C1B537600B1F054 /* BridgeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgeManager.swift; sourceTree = "<group>"; };
+		3F2367E92C1B552900B1F054 /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
+		3F2367EA2C1B555400B1F054 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3F2367EF2C1BA27D00B1F054 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F2367F22C1BBD0000B1F054 /* BottomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTabView.swift; sourceTree = "<group>"; };
+		3F2367F42C1BD95000B1F054 /* CartTotal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTotal.swift; sourceTree = "<group>"; };
+		3F2367FB2C1D4A3900B1F054 /* ShoppingAppWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShoppingAppWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F2367FC2C1D4A3A00B1F054 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		3F2367FE2C1D4A3A00B1F054 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		3F2368012C1D4A3A00B1F054 /* ShoppingAppWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingAppWidgetBundle.swift; sourceTree = "<group>"; };
+		3F2368032C1D4A3A00B1F054 /* ShoppingAppWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingAppWidgetLiveActivity.swift; sourceTree = "<group>"; };
+		3F2368052C1D4A3A00B1F054 /* ShoppingAppWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingAppWidget.swift; sourceTree = "<group>"; };
+		3F2368072C1D4A3A00B1F054 /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
+		3F2368092C1D4A3C00B1F054 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3F23680B2C1D4A3C00B1F054 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F7AA2212C17BD3900C6AA7D /* CartService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartService.swift; sourceTree = "<group>"; };
+		3F7AA2242C17C68900C6AA7D /* ShoppingHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingHeader.swift; sourceTree = "<group>"; };
+		3F7AA2262C17C73900C6AA7D /* CategoriesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesList.swift; sourceTree = "<group>"; };
+		3F7AA2282C17C9A700C6AA7D /* BannerPromotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerPromotion.swift; sourceTree = "<group>"; };
+		3F7AA22A2C17CA0400C6AA7D /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
+		3F7AA22C2C17CAA100C6AA7D /* ProductItemContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItemContent.swift; sourceTree = "<group>"; };
+		3F7AA22F2C17CB4F00C6AA7D /* Methods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Methods.swift; sourceTree = "<group>"; };
+		3F7AA2312C17F51C00C6AA7D /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
+		3F7AA2332C17F64500C6AA7D /* CustomBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackButton.swift; sourceTree = "<group>"; };
+		3F7AA2352C17FF3900C6AA7D /* CartItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemView.swift; sourceTree = "<group>"; };
+		3F7AA2372C180D0E00C6AA7D /* CartIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartIcon.swift; sourceTree = "<group>"; };
+		3F7AA2392C18BA0300C6AA7D /* ModuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleViewController.swift; sourceTree = "<group>"; };
+		3F7AA23B2C18BC2600C6AA7D /* ModuleViewControllerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleViewControllerWrapper.swift; sourceTree = "<group>"; };
+		3F7AA23D2C18BC9500C6AA7D /* Module.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Module.storyboard; sourceTree = "<group>"; };
+		3F7AA2412C190DFE00C6AA7D /* ShoppingApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ShoppingApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		3F81FA2B2C9A1CEF00202C01 /* ShoppingWatch.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.extensionkit-extension"; includeInIndex = 0; path = ShoppingWatch.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F81FA2D2C9A1CEF00202C01 /* ShoppingWatchExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingWatchExtension.swift; sourceTree = "<group>"; };
+		3F81FA2F2C9A1CEF00202C01 /* ShoppingWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingWatch.swift; sourceTree = "<group>"; };
+		3F81FA312C9A1CEF00202C01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F81FA392C9A1E1700202C01 /* ShoppingWatchApp.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShoppingWatchApp.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F81FA3B2C9A1E1700202C01 /* ShoppingWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingWatchApp.swift; sourceTree = "<group>"; };
+		3F9DF3552C28FA2C00AB9E97 /* PaymentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHandler.swift; sourceTree = "<group>"; };
+		3F9DF3572C28FA4700AB9E97 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		3FB234EA2C13BB5A00E2AAF1 /* ShoppingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FB234ED2C13BB5A00E2AAF1 /* ShoppingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingApp.swift; sourceTree = "<group>"; };
+		3FB234F22C13BB5A00E2AAF1 /* ShoppingApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ShoppingApp.xcdatamodel; sourceTree = "<group>"; };
+		3FB234F42C13BB5A00E2AAF1 /* ProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsView.swift; sourceTree = "<group>"; };
+		3FB234F62C13BB5B00E2AAF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3FB234F82C13BB5B00E2AAF1 /* ShoppingApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShoppingApp.entitlements; sourceTree = "<group>"; };
+		3FB235002C13BB5C00E2AAF1 /* ShoppingAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShoppingAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FB235042C13BB5C00E2AAF1 /* ShoppingAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingAppTests.swift; sourceTree = "<group>"; };
+		3FB2350A2C13BB5C00E2AAF1 /* ShoppingAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShoppingAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FB2350E2C13BB5C00E2AAF1 /* ShoppingAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingAppUITests.swift; sourceTree = "<group>"; };
+		3FB235102C13BB5C00E2AAF1 /* ShoppingAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3FB235222C15F54300E2AAF1 /* ShoppingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingService.swift; sourceTree = "<group>"; };
+		3FB235282C16093D00E2AAF1 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		3FB2352B2C1626BC00E2AAF1 /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
+		3FDA48882C166B9000EA4A1D /* LaunchView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchView.storyboard; sourceTree = "<group>"; };
+		3FEF43AC2C1E4AC900F3A1B2 /* ProductItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItem.swift; sourceTree = "<group>"; };
+		472C2A7BCF5C4E0831B371A3 /* Pods-ShoppingApp-ShoppingAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingApp-ShoppingAppTests.debug.xcconfig"; path = "Target Support Files/Pods-ShoppingApp-ShoppingAppTests/Pods-ShoppingApp-ShoppingAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		84265438F840CA3C41E5761C /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = ../PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		94CE59B6268BB0CB0CEF298B /* Pods-ShoppingApp-ShoppingAppWidgetExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingApp-ShoppingAppWidgetExtension.debug.xcconfig"; path = "Target Support Files/Pods-ShoppingApp-ShoppingAppWidgetExtension/Pods-ShoppingApp-ShoppingAppWidgetExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		AAA3726B74CE091F60A025C5 /* Pods-ShoppingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingApp.debug.xcconfig"; path = "Target Support Files/Pods-ShoppingApp/Pods-ShoppingApp.debug.xcconfig"; sourceTree = "<group>"; };
+		C8044F539DC759C57B13DCF4 /* libPods-ShoppingApp-ShoppingAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ShoppingApp-ShoppingAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FACA92FFD85E3D971E2762C9 /* Pods-ShoppingApp-ShoppingAppWidgetExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingApp-ShoppingAppWidgetExtension.release.xcconfig"; path = "Target Support Files/Pods-ShoppingApp-ShoppingAppWidgetExtension/Pods-ShoppingApp-ShoppingAppWidgetExtension.release.xcconfig"; sourceTree = "<group>"; };
+		FD7F8BDD55EBEAD43437F809 /* Pods-ShoppingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingApp.release.xcconfig"; path = "Target Support Files/Pods-ShoppingApp/Pods-ShoppingApp.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3F2367F82C1D4A3900B1F054 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F2367FF2C1D4A3A00B1F054 /* SwiftUI.framework in Frameworks */,
+				3F2367FD2C1D4A3A00B1F054 /* WidgetKit.framework in Frameworks */,
+				097C02859EDD833D8DAA22D5 /* libPods-ShoppingApp-ShoppingAppWidgetExtension.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F81FA282C9A1CEF00202C01 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F81FA362C9A1E1700202C01 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3FB234E72C13BB5A00E2AAF1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69C71081843F5E6358A2FAF2 /* libPods-ShoppingApp.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3FB234FD2C13BB5C00E2AAF1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46FAE1DB2A21FA4614FC3E02 /* libPods-ShoppingApp-ShoppingAppTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3FB235072C13BB5C00E2AAF1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		37E60EE294656A6F85AF93D7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AAA3726B74CE091F60A025C5 /* Pods-ShoppingApp.debug.xcconfig */,
+				FD7F8BDD55EBEAD43437F809 /* Pods-ShoppingApp.release.xcconfig */,
+				472C2A7BCF5C4E0831B371A3 /* Pods-ShoppingApp-ShoppingAppTests.debug.xcconfig */,
+				39D7045491DD6BF329A3DF78 /* Pods-ShoppingApp-ShoppingAppTests.release.xcconfig */,
+				94CE59B6268BB0CB0CEF298B /* Pods-ShoppingApp-ShoppingAppWidgetExtension.debug.xcconfig */,
+				FACA92FFD85E3D971E2762C9 /* Pods-ShoppingApp-ShoppingAppWidgetExtension.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		3F2367E42C1B536700B1F054 /* managers */ = {
+			isa = PBXGroup;
+			children = (
+				3F2367E52C1B537600B1F054 /* BridgeManager.swift */,
+			);
+			path = managers;
+			sourceTree = "<group>";
+		};
+		3F2367F12C1BBCEB00B1F054 /* navigation */ = {
+			isa = PBXGroup;
+			children = (
+				3F2367F22C1BBD0000B1F054 /* BottomTabView.swift */,
+			);
+			path = navigation;
+			sourceTree = "<group>";
+		};
+		3F2367F62C1BD9BF00B1F054 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3F2368002C1D4A3A00B1F054 /* ShoppingAppWidget */ = {
+			isa = PBXGroup;
+			children = (
+				3F2368012C1D4A3A00B1F054 /* ShoppingAppWidgetBundle.swift */,
+				3F2368032C1D4A3A00B1F054 /* ShoppingAppWidgetLiveActivity.swift */,
+				3F2368052C1D4A3A00B1F054 /* ShoppingAppWidget.swift */,
+				3F2368072C1D4A3A00B1F054 /* AppIntent.swift */,
+				3F2368092C1D4A3C00B1F054 /* Assets.xcassets */,
+				3F23680B2C1D4A3C00B1F054 /* Info.plist */,
+			);
+			path = ShoppingAppWidget;
+			sourceTree = "<group>";
+		};
+		3F7AA2232C17C65800C6AA7D /* components */ = {
+			isa = PBXGroup;
+			children = (
+				3F7AA2242C17C68900C6AA7D /* ShoppingHeader.swift */,
+				3F7AA2262C17C73900C6AA7D /* CategoriesList.swift */,
+				3F7AA2282C17C9A700C6AA7D /* BannerPromotion.swift */,
+				3F7AA22C2C17CAA100C6AA7D /* ProductItemContent.swift */,
+				3F7AA2332C17F64500C6AA7D /* CustomBackButton.swift */,
+				3F7AA2352C17FF3900C6AA7D /* CartItemView.swift */,
+				3F7AA2372C180D0E00C6AA7D /* CartIcon.swift */,
+				3F2367F42C1BD95000B1F054 /* CartTotal.swift */,
+				3FEF43AC2C1E4AC900F3A1B2 /* ProductItem.swift */,
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
+		3F7AA22E2C17CB2700C6AA7D /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				3F7AA22F2C17CB4F00C6AA7D /* Methods.swift */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		3F81FA2C2C9A1CEF00202C01 /* ShoppingWatch */ = {
+			isa = PBXGroup;
+			children = (
+				3F81FA2D2C9A1CEF00202C01 /* ShoppingWatchExtension.swift */,
+				3F81FA2F2C9A1CEF00202C01 /* ShoppingWatch.swift */,
+				3F81FA312C9A1CEF00202C01 /* Info.plist */,
+			);
+			path = ShoppingWatch;
+			sourceTree = "<group>";
+		};
+		3F81FA3A2C9A1E1700202C01 /* ShoppingWatchApp */ = {
+			isa = PBXGroup;
+			children = (
+				3F81FA3B2C9A1E1700202C01 /* ShoppingWatchApp.swift */,
+			);
+			path = ShoppingWatchApp;
+			sourceTree = "<group>";
+		};
+		3F9DF3542C28FA1C00AB9E97 /* payment */ = {
+			isa = PBXGroup;
+			children = (
+				3F9DF3552C28FA2C00AB9E97 /* PaymentHandler.swift */,
+				3F9DF3572C28FA4700AB9E97 /* Configuration.swift */,
+			);
+			path = payment;
+			sourceTree = "<group>";
+		};
+		3FB234E12C13BB5A00E2AAF1 = {
+			isa = PBXGroup;
+			children = (
+				3FB234EC2C13BB5A00E2AAF1 /* ShoppingApp */,
+				3FB2350D2C13BB5C00E2AAF1 /* ShoppingAppUITests */,
+				3F2368002C1D4A3A00B1F054 /* ShoppingAppWidget */,
+				3F81FA2C2C9A1CEF00202C01 /* ShoppingWatch */,
+				3F81FA3A2C9A1E1700202C01 /* ShoppingWatchApp */,
+				3FB234EB2C13BB5A00E2AAF1 /* Products */,
+				37E60EE294656A6F85AF93D7 /* Pods */,
+				CAE71FA8366CE1BD1D43C689 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		3FB234EB2C13BB5A00E2AAF1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3FB234EA2C13BB5A00E2AAF1 /* ShoppingApp.app */,
+				3FB235002C13BB5C00E2AAF1 /* ShoppingAppTests.xctest */,
+				3FB2350A2C13BB5C00E2AAF1 /* ShoppingAppUITests.xctest */,
+				3F2367FB2C1D4A3900B1F054 /* ShoppingAppWidgetExtension.appex */,
+				3F81FA2B2C9A1CEF00202C01 /* ShoppingWatch.appex */,
+				3F81FA392C9A1E1700202C01 /* ShoppingWatchApp.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3FB234EC2C13BB5A00E2AAF1 /* ShoppingApp */ = {
+			isa = PBXGroup;
+			children = (
+				3F9DF3542C28FA1C00AB9E97 /* payment */,
+				3F2367F62C1BD9BF00B1F054 /* Preview Content */,
+				3F2367F12C1BBCEB00B1F054 /* navigation */,
+				3F7AA2232C17C65800C6AA7D /* components */,
+				3FB2352A2C1626AD00E2AAF1 /* config */,
+				3F2367E42C1B536700B1F054 /* managers */,
+				3FB235212C15F53700E2AAF1 /* services */,
+				3FB235272C16093300E2AAF1 /* types */,
+				3F7AA22E2C17CB2700C6AA7D /* utils */,
+				3FDA48872C166A1C00EA4A1D /* views */,
+				3F7AA2412C190DFE00C6AA7D /* ShoppingApp-Bridging-Header.h */,
+				3F2367E92C1B552900B1F054 /* main.jsbundle */,
+				3F2367EF2C1BA27D00B1F054 /* Info.plist */,
+				3F2367EA2C1B555400B1F054 /* AppDelegate.swift */,
+				3FB234ED2C13BB5A00E2AAF1 /* ShoppingApp.swift */,
+				3FB234F82C13BB5B00E2AAF1 /* ShoppingApp.entitlements */,
+				3FB234F62C13BB5B00E2AAF1 /* Assets.xcassets */,
+				84265438F840CA3C41E5761C /* PrivacyInfo.xcprivacy */,
+				3FB234F12C13BB5A00E2AAF1 /* ShoppingApp.xcdatamodeld */,
+			);
+			path = ShoppingApp;
+			sourceTree = "<group>";
+		};
+		3FB235032C13BB5C00E2AAF1 /* ShoppingAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				3FB235042C13BB5C00E2AAF1 /* ShoppingAppTests.swift */,
+			);
+			path = ShoppingAppTests;
+			sourceTree = "<group>";
+		};
+		3FB2350D2C13BB5C00E2AAF1 /* ShoppingAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				3FB2350E2C13BB5C00E2AAF1 /* ShoppingAppUITests.swift */,
+				3FB235102C13BB5C00E2AAF1 /* ShoppingAppUITestsLaunchTests.swift */,
+			);
+			path = ShoppingAppUITests;
+			sourceTree = "<group>";
+		};
+		3FB235212C15F53700E2AAF1 /* services */ = {
+			isa = PBXGroup;
+			children = (
+				3FB235222C15F54300E2AAF1 /* ShoppingService.swift */,
+				3F7AA2212C17BD3900C6AA7D /* CartService.swift */,
+			);
+			path = services;
+			sourceTree = "<group>";
+		};
+		3FB235272C16093300E2AAF1 /* types */ = {
+			isa = PBXGroup;
+			children = (
+				3FB235282C16093D00E2AAF1 /* Product.swift */,
+			);
+			path = types;
+			sourceTree = "<group>";
+		};
+		3FB2352A2C1626AD00E2AAF1 /* config */ = {
+			isa = PBXGroup;
+			children = (
+				3FB2352B2C1626BC00E2AAF1 /* constants.swift */,
+			);
+			path = config;
+			sourceTree = "<group>";
+		};
+		3FDA48872C166A1C00EA4A1D /* views */ = {
+			isa = PBXGroup;
+			children = (
+				3FB234F42C13BB5A00E2AAF1 /* ProductsView.swift */,
+				3FDA48882C166B9000EA4A1D /* LaunchView.storyboard */,
+				3F7AA22A2C17CA0400C6AA7D /* ProductDetailView.swift */,
+				3F7AA2312C17F51C00C6AA7D /* CartView.swift */,
+				3F7AA2392C18BA0300C6AA7D /* ModuleViewController.swift */,
+				3F7AA23B2C18BC2600C6AA7D /* ModuleViewControllerWrapper.swift */,
+				3F7AA23D2C18BC9500C6AA7D /* Module.storyboard */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		CAE71FA8366CE1BD1D43C689 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3FB235032C13BB5C00E2AAF1 /* ShoppingAppTests */,
+				3B748FC1BB0B90145B6EC95A /* libPods-ShoppingApp.a */,
+				C8044F539DC759C57B13DCF4 /* libPods-ShoppingApp-ShoppingAppTests.a */,
+				3F2367FC2C1D4A3A00B1F054 /* WidgetKit.framework */,
+				3F2367FE2C1D4A3A00B1F054 /* SwiftUI.framework */,
+				17870C7B856396561F9DC364 /* libPods-ShoppingApp-ShoppingAppWidgetExtension.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3F2367FA2C1D4A3900B1F054 /* ShoppingAppWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F2368122C1D4A3D00B1F054 /* Build configuration list for PBXNativeTarget "ShoppingAppWidgetExtension" */;
+			buildPhases = (
+				54CDF9CDD670B99BCA805C2C /* [CP] Check Pods Manifest.lock */,
+				3F2367F72C1D4A3900B1F054 /* Sources */,
+				3F2367F82C1D4A3900B1F054 /* Frameworks */,
+				3F2367F92C1D4A3900B1F054 /* Resources */,
+				C6022E68293EABCF4DABF43E /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ShoppingAppWidgetExtension;
+			productName = ShoppingAppWidgetExtension;
+			productReference = 3F2367FB2C1D4A3900B1F054 /* ShoppingAppWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		3F81FA2A2C9A1CEF00202C01 /* ShoppingWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F81FA342C9A1CEF00202C01 /* Build configuration list for PBXNativeTarget "ShoppingWatch" */;
+			buildPhases = (
+				3F81FA272C9A1CEF00202C01 /* Sources */,
+				3F81FA282C9A1CEF00202C01 /* Frameworks */,
+				3F81FA292C9A1CEF00202C01 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ShoppingWatch;
+			productName = ShoppingWatch;
+			productReference = 3F81FA2B2C9A1CEF00202C01 /* ShoppingWatch.appex */;
+			productType = "com.apple.product-type.extensionkit-extension";
+		};
+		3F81FA382C9A1E1700202C01 /* ShoppingWatchApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F81FA3D2C9A1E1700202C01 /* Build configuration list for PBXNativeTarget "ShoppingWatchApp" */;
+			buildPhases = (
+				3F81FA352C9A1E1700202C01 /* Sources */,
+				3F81FA362C9A1E1700202C01 /* Frameworks */,
+				3F81FA372C9A1E1700202C01 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ShoppingWatchApp;
+			productName = ShoppingWatchApp;
+			productReference = 3F81FA392C9A1E1700202C01 /* ShoppingWatchApp.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3FB234E92C13BB5A00E2AAF1 /* ShoppingApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3FB235142C13BB5C00E2AAF1 /* Build configuration list for PBXNativeTarget "ShoppingApp" */;
+			buildPhases = (
+				2F196B78B6E0BD4C974B8FF6 /* [CP] Check Pods Manifest.lock */,
+				3FB234E62C13BB5A00E2AAF1 /* Sources */,
+				3FB234E72C13BB5A00E2AAF1 /* Frameworks */,
+				3FB234E82C13BB5A00E2AAF1 /* Resources */,
+				6D6D6808BF88F6323947FE4D /* [CP] Embed Pods Frameworks */,
+				8E6DE501A7D0487F62F162E0 /* [CP] Copy Pods Resources */,
+				3F23680F2C1D4A3D00B1F054 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3F23680D2C1D4A3C00B1F054 /* PBXTargetDependency */,
+			);
+			name = ShoppingApp;
+			productName = ShoppingApp;
+			productReference = 3FB234EA2C13BB5A00E2AAF1 /* ShoppingApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3FB234FF2C13BB5C00E2AAF1 /* ShoppingAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3FB235172C13BB5C00E2AAF1 /* Build configuration list for PBXNativeTarget "ShoppingAppTests" */;
+			buildPhases = (
+				6AC5224A25498412D98E8929 /* [CP] Check Pods Manifest.lock */,
+				3FB234FC2C13BB5C00E2AAF1 /* Sources */,
+				3FB234FD2C13BB5C00E2AAF1 /* Frameworks */,
+				3FB234FE2C13BB5C00E2AAF1 /* Resources */,
+				3340E352AFCCFFFDC541F82A /* [CP] Embed Pods Frameworks */,
+				8F0E95D899939D58E8AB7023 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3FB235022C13BB5C00E2AAF1 /* PBXTargetDependency */,
+			);
+			name = ShoppingAppTests;
+			productName = ShoppingAppTests;
+			productReference = 3FB235002C13BB5C00E2AAF1 /* ShoppingAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3FB235092C13BB5C00E2AAF1 /* ShoppingAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3FB2351A2C13BB5C00E2AAF1 /* Build configuration list for PBXNativeTarget "ShoppingAppUITests" */;
+			buildPhases = (
+				3FB235062C13BB5C00E2AAF1 /* Sources */,
+				3FB235072C13BB5C00E2AAF1 /* Frameworks */,
+				3FB235082C13BB5C00E2AAF1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3FB2350C2C13BB5C00E2AAF1 /* PBXTargetDependency */,
+			);
+			name = ShoppingAppUITests;
+			productName = ShoppingAppUITests;
+			productReference = 3FB2350A2C13BB5C00E2AAF1 /* ShoppingAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3FB234E22C13BB5A00E2AAF1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					3F2367FA2C1D4A3900B1F054 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					3F81FA2A2C9A1CEF00202C01 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					3F81FA382C9A1E1700202C01 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					3FB234E92C13BB5A00E2AAF1 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					3FB234FF2C13BB5C00E2AAF1 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 3FB234E92C13BB5A00E2AAF1;
+					};
+					3FB235092C13BB5C00E2AAF1 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 3FB234E92C13BB5A00E2AAF1;
+					};
+				};
+			};
+			buildConfigurationList = 3FB234E52C13BB5A00E2AAF1 /* Build configuration list for PBXProject "ShoppingApp" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3FB234E12C13BB5A00E2AAF1;
+			productRefGroup = 3FB234EB2C13BB5A00E2AAF1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3FB234E92C13BB5A00E2AAF1 /* ShoppingApp */,
+				3FB234FF2C13BB5C00E2AAF1 /* ShoppingAppTests */,
+				3FB235092C13BB5C00E2AAF1 /* ShoppingAppUITests */,
+				3F2367FA2C1D4A3900B1F054 /* ShoppingAppWidgetExtension */,
+				3F81FA2A2C9A1CEF00202C01 /* ShoppingWatch */,
+				3F81FA382C9A1E1700202C01 /* ShoppingWatchApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3F2367F92C1D4A3900B1F054 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F23680A2C1D4A3C00B1F054 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F81FA292C9A1CEF00202C01 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F81FA372C9A1E1700202C01 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3FB234E82C13BB5A00E2AAF1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F2367EC2C1B923E00B1F054 /* main.jsbundle in Resources */,
+				3FDA48892C166B9000EA4A1D /* LaunchView.storyboard in Resources */,
+				3F7AA23E2C18BC9500C6AA7D /* Module.storyboard in Resources */,
+				3FB234F72C13BB5B00E2AAF1 /* Assets.xcassets in Resources */,
+				A7264287962B5CD415461355 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3FB234FE2C13BB5C00E2AAF1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3FB235082C13BB5C00E2AAF1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2F196B78B6E0BD4C974B8FF6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ShoppingApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3340E352AFCCFFFDC541F82A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ShoppingApp-ShoppingAppTests/Pods-ShoppingApp-ShoppingAppTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ShoppingApp-ShoppingAppTests/Pods-ShoppingApp-ShoppingAppTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ShoppingApp-ShoppingAppTests/Pods-ShoppingApp-ShoppingAppTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		54CDF9CDD670B99BCA805C2C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ShoppingApp-ShoppingAppWidgetExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6AC5224A25498412D98E8929 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ShoppingApp-ShoppingAppTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6D6D6808BF88F6323947FE4D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ShoppingApp/Pods-ShoppingApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ShoppingApp/Pods-ShoppingApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ShoppingApp/Pods-ShoppingApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8E6DE501A7D0487F62F162E0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ShoppingApp/Pods-ShoppingApp-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ShoppingApp/Pods-ShoppingApp-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ShoppingApp/Pods-ShoppingApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8F0E95D899939D58E8AB7023 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ShoppingApp-ShoppingAppTests/Pods-ShoppingApp-ShoppingAppTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ShoppingApp-ShoppingAppTests/Pods-ShoppingApp-ShoppingAppTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ShoppingApp-ShoppingAppTests/Pods-ShoppingApp-ShoppingAppTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C6022E68293EABCF4DABF43E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ShoppingApp-ShoppingAppWidgetExtension/Pods-ShoppingApp-ShoppingAppWidgetExtension-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ShoppingApp-ShoppingAppWidgetExtension/Pods-ShoppingApp-ShoppingAppWidgetExtension-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ShoppingApp-ShoppingAppWidgetExtension/Pods-ShoppingApp-ShoppingAppWidgetExtension-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3F2367F72C1D4A3900B1F054 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F2368042C1D4A3A00B1F054 /* ShoppingAppWidgetLiveActivity.swift in Sources */,
+				3F2368082C1D4A3A00B1F054 /* AppIntent.swift in Sources */,
+				3F2368062C1D4A3A00B1F054 /* ShoppingAppWidget.swift in Sources */,
+				3F2368022C1D4A3A00B1F054 /* ShoppingAppWidgetBundle.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F81FA272C9A1CEF00202C01 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F81FA2E2C9A1CEF00202C01 /* ShoppingWatchExtension.swift in Sources */,
+				3F81FA302C9A1CEF00202C01 /* ShoppingWatch.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F81FA352C9A1E1700202C01 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F81FA3C2C9A1E1700202C01 /* ShoppingWatchApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3FB234E62C13BB5A00E2AAF1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F7AA22D2C17CAA100C6AA7D /* ProductItemContent.swift in Sources */,
+				3F7AA23C2C18BC2600C6AA7D /* ModuleViewControllerWrapper.swift in Sources */,
+				3FEF43AD2C1E4AC900F3A1B2 /* ProductItem.swift in Sources */,
+				3F7AA2362C17FF3900C6AA7D /* CartItemView.swift in Sources */,
+				3F7AA23A2C18BA0300C6AA7D /* ModuleViewController.swift in Sources */,
+				3F7AA2252C17C68900C6AA7D /* ShoppingHeader.swift in Sources */,
+				3F7AA2222C17BD3900C6AA7D /* CartService.swift in Sources */,
+				3F7AA22B2C17CA0400C6AA7D /* ProductDetailView.swift in Sources */,
+				3FB234EE2C13BB5A00E2AAF1 /* ShoppingApp.swift in Sources */,
+				3F7AA2382C180D0E00C6AA7D /* CartIcon.swift in Sources */,
+				3FB234F32C13BB5A00E2AAF1 /* ShoppingApp.xcdatamodeld in Sources */,
+				3F2367E62C1B537600B1F054 /* BridgeManager.swift in Sources */,
+				3F2367F32C1BBD0000B1F054 /* BottomTabView.swift in Sources */,
+				3F7AA2342C17F64500C6AA7D /* CustomBackButton.swift in Sources */,
+				3FB234F52C13BB5A00E2AAF1 /* ProductsView.swift in Sources */,
+				3FB2352C2C1626BC00E2AAF1 /* constants.swift in Sources */,
+				3F9DF3562C28FA2C00AB9E97 /* PaymentHandler.swift in Sources */,
+				3F7AA2322C17F51C00C6AA7D /* CartView.swift in Sources */,
+				3F2367F52C1BD95000B1F054 /* CartTotal.swift in Sources */,
+				3F7AA2272C17C73900C6AA7D /* CategoriesList.swift in Sources */,
+				3F9DF3582C28FA4700AB9E97 /* Configuration.swift in Sources */,
+				3FB235232C15F54300E2AAF1 /* ShoppingService.swift in Sources */,
+				3FB235292C16093D00E2AAF1 /* Product.swift in Sources */,
+				3F2367EB2C1B555400B1F054 /* AppDelegate.swift in Sources */,
+				3F7AA2302C17CB4F00C6AA7D /* Methods.swift in Sources */,
+				3F7AA2292C17C9A700C6AA7D /* BannerPromotion.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3FB234FC2C13BB5C00E2AAF1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3FB235052C13BB5C00E2AAF1 /* ShoppingAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3FB235062C13BB5C00E2AAF1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3FB235112C13BB5C00E2AAF1 /* ShoppingAppUITestsLaunchTests.swift in Sources */,
+				3FB2350F2C13BB5C00E2AAF1 /* ShoppingAppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3F23680D2C1D4A3C00B1F054 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3F2367FA2C1D4A3900B1F054 /* ShoppingAppWidgetExtension */;
+			targetProxy = 3F23680C2C1D4A3C00B1F054 /* PBXContainerItemProxy */;
+		};
+		3FB235022C13BB5C00E2AAF1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3FB234E92C13BB5A00E2AAF1 /* ShoppingApp */;
+			targetProxy = 3FB235012C13BB5C00E2AAF1 /* PBXContainerItemProxy */;
+		};
+		3FB2350C2C13BB5C00E2AAF1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3FB234E92C13BB5A00E2AAF1 /* ShoppingApp */;
+			targetProxy = 3FB2350B2C13BB5C00E2AAF1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		3F2368102C1D4A3D00B1F054 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 94CE59B6268BB0CB0CEF298B /* Pods-ShoppingApp-ShoppingAppWidgetExtension.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J38J9AUL72;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ShoppingAppWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = StyleX;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ml.ShoppingApp.ShoppingAppWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3F2368112C1D4A3D00B1F054 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FACA92FFD85E3D971E2762C9 /* Pods-ShoppingApp-ShoppingAppWidgetExtension.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J38J9AUL72;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ShoppingAppWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = StyleX;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ml.ShoppingApp.ShoppingAppWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3F81FA322C9A1CEF00202C01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J38J9AUL72;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ShoppingWatch/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = StyleX;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ml.ShoppingWatch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.2;
+			};
+			name = Debug;
+		};
+		3F81FA332C9A1CEF00202C01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J38J9AUL72;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ShoppingWatch/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = StyleX;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ml.ShoppingWatch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 10.2;
+			};
+			name = Release;
+		};
+		3F81FA3E2C9A1E1700202C01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J38J9AUL72;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ml.ShoppingWatchApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.2;
+			};
+			name = Debug;
+		};
+		3F81FA3F2C9A1E1700202C01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J38J9AUL72;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ml.ShoppingWatchApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 10.2;
+			};
+			name = Release;
+		};
+		3FB235122C13BB5C00E2AAF1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CC = "";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CXX = "";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LD = "";
+				LDPLUSPLUS = "";
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "$(inherited)  ";
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				USE_HERMES = true;
+			};
+			name = Debug;
+		};
+		3FB235132C13BB5C00E2AAF1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CC = "";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CXX = "";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LD = "";
+				LDPLUSPLUS = "";
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "$(inherited)  ";
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				USE_HERMES = true;
+			};
+			name = Release;
+		};
+		3FB235152C13BB5C00E2AAF1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AAA3726B74CE091F60A025C5 /* Pods-ShoppingApp.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ShoppingApp/ShoppingApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"ShoppingApp/Preview Content\"";
+				DEVELOPMENT_TEAM = J38J9AUL72;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchView.storyboard;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ml.ShoppingApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3FB235162C13BB5C00E2AAF1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD7F8BDD55EBEAD43437F809 /* Pods-ShoppingApp.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ShoppingApp/ShoppingApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"ShoppingApp/Preview Content\"";
+				DEVELOPMENT_TEAM = J38J9AUL72;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchView.storyboard;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ml.ShoppingApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		3FB235182C13BB5C00E2AAF1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 472C2A7BCF5C4E0831B371A3 /* Pods-ShoppingApp-ShoppingAppTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7HDZ85FQQT;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ml.ShoppingAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ShoppingApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ShoppingApp";
+			};
+			name = Debug;
+		};
+		3FB235192C13BB5C00E2AAF1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 39D7045491DD6BF329A3DF78 /* Pods-ShoppingApp-ShoppingAppTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7HDZ85FQQT;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ml.ShoppingAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ShoppingApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ShoppingApp";
+			};
+			name = Release;
+		};
+		3FB2351B2C13BB5C00E2AAF1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7HDZ85FQQT;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ml.ShoppingAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ShoppingApp;
+			};
+			name = Debug;
+		};
+		3FB2351C2C13BB5C00E2AAF1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7HDZ85FQQT;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ml.ShoppingAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ShoppingApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3F2368122C1D4A3D00B1F054 /* Build configuration list for PBXNativeTarget "ShoppingAppWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F2368102C1D4A3D00B1F054 /* Debug */,
+				3F2368112C1D4A3D00B1F054 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3F81FA342C9A1CEF00202C01 /* Build configuration list for PBXNativeTarget "ShoppingWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F81FA322C9A1CEF00202C01 /* Debug */,
+				3F81FA332C9A1CEF00202C01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3F81FA3D2C9A1E1700202C01 /* Build configuration list for PBXNativeTarget "ShoppingWatchApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F81FA3E2C9A1E1700202C01 /* Debug */,
+				3F81FA3F2C9A1E1700202C01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3FB234E52C13BB5A00E2AAF1 /* Build configuration list for PBXProject "ShoppingApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3FB235122C13BB5C00E2AAF1 /* Debug */,
+				3FB235132C13BB5C00E2AAF1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3FB235142C13BB5C00E2AAF1 /* Build configuration list for PBXNativeTarget "ShoppingApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3FB235152C13BB5C00E2AAF1 /* Debug */,
+				3FB235162C13BB5C00E2AAF1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3FB235172C13BB5C00E2AAF1 /* Build configuration list for PBXNativeTarget "ShoppingAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3FB235182C13BB5C00E2AAF1 /* Debug */,
+				3FB235192C13BB5C00E2AAF1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3FB2351A2C13BB5C00E2AAF1 /* Build configuration list for PBXNativeTarget "ShoppingAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3FB2351B2C13BB5C00E2AAF1 /* Debug */,
+				3FB2351C2C13BB5C00E2AAF1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3FB234F12C13BB5A00E2AAF1 /* ShoppingApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3FB234F22C13BB5A00E2AAF1 /* ShoppingApp.xcdatamodel */,
+			);
+			currentVersion = 3FB234F22C13BB5A00E2AAF1 /* ShoppingApp.xcdatamodel */;
+			path = ShoppingApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 3FB234E22C13BB5A00E2AAF1 /* Project object */;
+}
