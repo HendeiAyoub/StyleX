@@ -34,6 +34,16 @@ struct BottomTabView: View {
           .renderingMode(.template)
       }
       .tag(2)
+
+      NavigationStack {
+        AIChatView()
+      }
+      .tabItem {
+        Text("AI")
+        Image(systemName: "sparkles")
+          .renderingMode(.template)
+      }
+      .tag(3)
     }
   }
 }

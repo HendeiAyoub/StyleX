@@ -3,3 +3,6 @@ build/
 **/.DS_Store
 **/node_modules/*
 **/xcuserdata/
+**/.venv/
+**/__pycache__/
+LocalFashionAI/*.sqlite3

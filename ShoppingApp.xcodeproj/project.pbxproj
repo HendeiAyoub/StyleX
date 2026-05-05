@@ -50,6 +50,8 @@
 		3FB235232C15F54300E2AAF1 /* ShoppingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB235222C15F54300E2AAF1 /* ShoppingService.swift */; };
 		3FB235292C16093D00E2AAF1 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB235282C16093D00E2AAF1 /* Product.swift */; };
 		3FB2352C2C1626BC00E2AAF1 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB2352B2C1626BC00E2AAF1 /* constants.swift */; };
+		3FC900012D00000100AA0001 /* AIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC900002D00000100AA0001 /* AIClient.swift */; };
+		3FC900032D00000100AA0001 /* AIChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC900022D00000100AA0001 /* AIChatView.swift */; };
 		3FDA48892C166B9000EA4A1D /* LaunchView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FDA48882C166B9000EA4A1D /* LaunchView.storyboard */; };
 		3FEF43AD2C1E4AC900F3A1B2 /* ProductItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEF43AC2C1E4AC900F3A1B2 /* ProductItem.swift */; };
 		46FAE1DB2A21FA4614FC3E02 /* libPods-ShoppingApp-ShoppingAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C8044F539DC759C57B13DCF4 /* libPods-ShoppingApp-ShoppingAppTests.a */; };
@@ -151,6 +153,8 @@
 		3FB235222C15F54300E2AAF1 /* ShoppingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingService.swift; sourceTree = "<group>"; };
 		3FB235282C16093D00E2AAF1 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		3FB2352B2C1626BC00E2AAF1 /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
+		3FC900002D00000100AA0001 /* AIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIClient.swift; sourceTree = "<group>"; };
+		3FC900022D00000100AA0001 /* AIChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIChatView.swift; sourceTree = "<group>"; };
 		3FDA48882C166B9000EA4A1D /* LaunchView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchView.storyboard; sourceTree = "<group>"; };
 		3FEF43AC2C1E4AC900F3A1B2 /* ProductItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItem.swift; sourceTree = "<group>"; };
 		472C2A7BCF5C4E0831B371A3 /* Pods-ShoppingApp-ShoppingAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingApp-ShoppingAppTests.debug.xcconfig"; path = "Target Support Files/Pods-ShoppingApp-ShoppingAppTests/Pods-ShoppingApp-ShoppingAppTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -387,6 +391,7 @@
 			isa = PBXGroup;
 			children = (
 				3FB235222C15F54300E2AAF1 /* ShoppingService.swift */,
+				3FC900002D00000100AA0001 /* AIClient.swift */,
 				3F7AA2212C17BD3900C6AA7D /* CartService.swift */,
 			);
 			path = services;
@@ -412,6 +417,7 @@
 			isa = PBXGroup;
 			children = (
 				3FB234F42C13BB5A00E2AAF1 /* ProductsView.swift */,
+				3FC900022D00000100AA0001 /* AIChatView.swift */,
 				3FDA48882C166B9000EA4A1D /* LaunchView.storyboard */,
 				3F7AA22A2C17CA0400C6AA7D /* ProductDetailView.swift */,
 				3F7AA2312C17F51C00C6AA7D /* CartView.swift */,
@@ -863,9 +869,11 @@
 				3FB2352C2C1626BC00E2AAF1 /* constants.swift in Sources */,
 				3F9DF3562C28FA2C00AB9E97 /* PaymentHandler.swift in Sources */,
 				3F7AA2322C17F51C00C6AA7D /* CartView.swift in Sources */,
+				3FC900012D00000100AA0001 /* AIClient.swift in Sources */,
 				3F2367F52C1BD95000B1F054 /* CartTotal.swift in Sources */,
 				3F7AA2272C17C73900C6AA7D /* CategoriesList.swift in Sources */,
 				3F9DF3582C28FA4700AB9E97 /* Configuration.swift in Sources */,
+				3FC900032D00000100AA0001 /* AIChatView.swift in Sources */,
 				3FB235232C15F54300E2AAF1 /* ShoppingService.swift in Sources */,
 				3FB235292C16093D00E2AAF1 /* Product.swift in Sources */,
 				3F2367EB2C1B555400B1F054 /* AppDelegate.swift in Sources */,
