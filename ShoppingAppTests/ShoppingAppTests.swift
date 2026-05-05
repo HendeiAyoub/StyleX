@@ -2,7 +2,7 @@
 //  ShoppingAppTests.swift
 //  ShoppingAppTests
 //
-//  Created by Maria Luísa Costa Pinto on 07/06/24.
+//  Created by Youbi William on 07/06/24.
 //
 
 import XCTest

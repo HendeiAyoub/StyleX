@@ -2,7 +2,7 @@
 //  ShoppingWatchApp.swift
 //  ShoppingWatchApp
 //
-//  Created by Maria Luísa Costa Pinto on 17/09/24.
+//  Created by Youbi William on 17/09/24.
 //
 
 import XCTest

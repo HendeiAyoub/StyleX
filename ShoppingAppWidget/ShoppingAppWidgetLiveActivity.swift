@@ -2,7 +2,7 @@
 //  ShoppingAppWidgetLiveActivity.swift
 //  ShoppingAppWidget
 //
-//  Created by Maria Luísa Costa Pinto on 15/06/24.
+//  Created by Youbi William on 15/06/24.
 //
 
 import ActivityKit
