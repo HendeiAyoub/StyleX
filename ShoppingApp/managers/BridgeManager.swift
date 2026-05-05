@@ -13,11 +13,14 @@ class BridgeManager: NSObject {
 
 extension BridgeManager: RCTBridgeDelegate {
   func sourceURL(for _: RCTBridge) -> URL? {
+    if let bundledURL = Bundle.main.url(forResource: "main", withExtension: "jsbundle") {
+      return bundledURL
+    }
+
     #if DEBUG
       return RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index")
     #else
       return NSBundle.main.url(forResource: "main", withExtension: "jsbundle")
     #endif
-    // return Bundle.main.url(forResource: "main", withExtension: "jsbundle")
   }
 }
