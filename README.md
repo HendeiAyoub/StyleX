@@ -35,7 +35,6 @@ The main technologies used in this project are:
 - SwiftUI
 - URLSession
 - CoreData
-- React Native Module
 
 
 In this project, SwiftUI was employed to design native components and screens for iOS, encompassing all primary interfaces. 
@@ -47,12 +46,9 @@ Alongside visual development, the app interacts with the store through requests 
 Persistence of shopping cart data is achieved using CoreData, ensuring seamless management and retention of user selections within the application.
 
 
-<h2 id="module"> React Native Module </h2>
+<h2 id="module"> Demo Module </h2>
 
-
-To explore the integration of React Native modules into the app, we developed an RN module for it.
-
-The module was integrated using RCTView in Swift, incorporating React Native libraries into the project. Additionally, a Bridge Manager was implemented to facilitate seamless communication between the native and React Native environments.
+The original React Native experiment is disabled in this local AI demo branch. The app runs as a native SwiftUI simulator demo without CocoaPods, npm, Supabase, or Firebase setup.
 
 
 <h2 id="run"> Run </h2>
@@ -73,3 +69,30 @@ The module was integrated using RCTView in Swift, incorporating React Native lib
 
 Upon launching the app, you will be presented with a list of products. You can tap on any product to view its details. The app also allows you to filter products by category using the provided filter options.
 
+<h2 id="ai-demo"> Local AI Demo Mode </h2>
+
+This branch is prepared for a classroom demo on an iOS Simulator inside a macOS VM. It does not use Supabase, Firebase, or any personal cloud account.
+
+What works locally:
+- Local demo product catalog
+- Local liked products and AI chat history
+- "For You" feed
+- Semantic-style search with fallback results
+- "You Might Also Like" recommendations
+- "Style This Item" advice card
+- AI Chat tab with recommended product cards
+
+The app tries the Style-DZ AI endpoint when available:
+
+`https://albatross-emblem-yonder.ngrok-free.dev`
+
+If that server is offline, the app automatically uses local fallback responses so the professor demo still works.
+
+Recommended VM run path:
+1. Use macOS with Xcode installed.
+2. Open `ShoppingApp.xcodeproj`.
+3. Select the `ShoppingApp` scheme.
+4. Select an iPhone Simulator.
+5. Press Run.
+
+No `pod install`, `npm install`, Supabase setup, Firebase setup, or signing account is required for the simulator demo path.

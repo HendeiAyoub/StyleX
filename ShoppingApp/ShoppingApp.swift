@@ -1,4 +1,3 @@
-import React
 import SwiftUI
 
 @main
