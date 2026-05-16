@@ -1,7 +1,3 @@
-//
-//  ShoppingAppUITests.swift
-//  ShoppingAppUITests
-//
 
 import XCTest
 

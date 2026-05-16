@@ -1,5 +1,4 @@
 name: iOS Simulator Test
-
 on:
   push:
     branches: [ "local-ai-demo", "main" ]

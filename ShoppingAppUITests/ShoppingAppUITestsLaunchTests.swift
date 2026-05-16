@@ -1,9 +1,3 @@
-//
-//  ShoppingAppUITestsLaunchTests.swift
-//  ShoppingAppUITests
-//
-//  Created by Maria Luísa Costa Pinto on 07/06/24.
-//
 
 import XCTest
 
