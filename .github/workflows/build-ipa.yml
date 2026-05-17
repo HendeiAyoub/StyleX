@@ -57,7 +57,12 @@ jobs:
             ShoppingApp.xcodeproj/project.pbxproj
           sed -i '' 's/DEVELOPMENT_TEAM = J38J9AUL72;/DEVELOPMENT_TEAM = 39Z5QDFQQG;/g' \
             ShoppingApp.xcodeproj/project.pbxproj
-
+      - name: Remove Wallet Capability
+        run: |
+          sed -i '' '/com.apple.developer.pass-type-identifiers/,/\/array/d' \
+            ShoppingApp/ShoppingApp.entitlements
+          sed -i '' '/com.apple.wallet/d' \
+            ShoppingApp/ShoppingApp.entitlements
       - name: Unlock Keychain
         run: |
           security unlock-keychain -p "${{ secrets.KEYCHAIN_PASSWORD }}" build.keychain
@@ -75,9 +80,6 @@ jobs:
             -allowProvisioningUpdates \
             archive \
             -archivePath $RUNNER_TEMP/app.xcarchive
-        env:
-          CODESIGN_ALLOCATE: /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/codesign_allocate
-
       - name: Export IPA
         run: |
           xcodebuild \
