@@ -3,15 +3,17 @@
 <plist version="1.0">
 <dict>
     <key>method</key>
-    <string>ad-hoc</string>
+    <string>development</string>
     <key>teamID</key>
-    <string>YOUR_TEAM_ID</string>
+    <string>J38J9AUL72</string>
     <key>signingStyle</key>
     <string>manual</string>
     <key>provisioningProfiles</key>
     <dict>
-        <key>com.yourname.shoppingapp</key>
-        <string>your-profile-name</string>
+        <key>com.stylix.tryon</key>
+        <string>iOS Team Provisioning Profile: com.stylix.tryon</string>
+        <key>com.stylix.tryon.ShoppingAppWidgetExtension</key>
+        <string>iOS Team Provisioning Profile: com.stylix.tryon</string>
     </dict>
 </dict>
 </plist>
