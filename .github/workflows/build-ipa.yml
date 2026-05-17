@@ -1,22 +1,20 @@
 name: Build IPA
-
 on:
   push:
     branches: [main]
   workflow_dispatch:
-
 jobs:
   build:
     runs-on: macos-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
       - name: Install JS Dependencies
         run: |
           cd ShoppingModuleRN
           npm install
-      
+
       - name: Install CocoaPods
         run: |
           pod install
@@ -50,7 +48,7 @@ jobs:
             -archivePath ./build/ShoppingApp.xcarchive \
             -destination "generic/platform=iOS" \
             CODE_SIGN_STYLE=Manual \
-            PROVISIONING_PROFILE_SPECIFIER="your-profile-name"
+            PROVISIONING_PROFILE_SPECIFIER="iOS Team Provisioning Profile: com.stylix.tryon"
 
       - name: Export IPA
         run: |
