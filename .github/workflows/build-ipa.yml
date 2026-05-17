@@ -12,11 +12,18 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
+      - name: Install JS Dependencies
+        run: |
+          cd ShoppingModuleRN
+          npm install
+      
       - name: Install CocoaPods
         run: |
-          cd ShoppingApp  # adjust if Podfile is in root
           pod install
+            - name: Install CocoaPods
+              run: |
+                cd ShoppingApp  # adjust if Podfile is in root
+                pod install
 
       - name: Import Certificate
         env:
