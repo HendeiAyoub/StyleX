@@ -55,7 +55,14 @@ jobs:
             ShoppingApp.xcodeproj/project.pbxproj
           sed -i '' 's/ml\.ShoppingApp/com.stylix.tryon/g' \
             ShoppingApp.xcodeproj/project.pbxproj
-          sed -i '' 's/DEVELOPMENT_TEAM = J38J9AUL72;/DEVELOPMENT_TEAM = 39Z5QDFQQG;/g' \
+          sed -i '' 's/DEVELOPMENT_TEAM = J38J9AUL72;/DEVELOPMENT_TEAM = 6DZRWX4XK8;/g' \
+            ShoppingApp.xcodeproj/project.pbxproj
+          sed -i '' 's/DEVELOPMENT_TEAM = 39Z5QDFQQG;/DEVELOPMENT_TEAM = 6DZRWX4XK8;/g' \
+            ShoppingApp.xcodeproj/project.pbxproj
+
+      - name: Remove Widget From Build
+        run: |
+          sed -i '' '/ShoppingAppWidgetExtension/d' \
             ShoppingApp.xcodeproj/project.pbxproj
       - name: Remove Wallet Capability
         run: |
@@ -76,7 +83,7 @@ jobs:
             -configuration Release \
             -destination generic/platform=iOS \
             CODE_SIGN_STYLE=Automatic \
-            DEVELOPMENT_TEAM=39Z5QDFQQG \
+            DEVELOPMENT_TEAM=6DZRWX4XK8 \
             -allowProvisioningUpdates \
             archive \
             -archivePath $RUNNER_TEMP/app.xcarchive
