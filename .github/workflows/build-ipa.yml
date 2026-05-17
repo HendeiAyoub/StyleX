@@ -52,13 +52,13 @@ jobs:
       - name: Patch Bundle ID and Team
         run: |
           sed -i '' 's/ml\.ShoppingApp\.ShoppingAppWidget/com.stylix.tryon.widget/g' \
-            ShoppingApp.xcodeproj/project.pbxproj
+          ShoppingApp.xcodeproj/project.pbxproj
           sed -i '' 's/ml\.ShoppingApp/com.stylix.tryon/g' \
-            ShoppingApp.xcodeproj/project.pbxproj
-          sed -i '' 's/DEVELOPMENT_TEAM = J38J9AUL72;/DEVELOPMENT_TEAM = 6DZRWX4XK8;/g' \
-            ShoppingApp.xcodeproj/project.pbxproj
-          sed -i '' 's/DEVELOPMENT_TEAM = 39Z5QDFQQG;/DEVELOPMENT_TEAM = 6DZRWX4XK8;/g' \
-            ShoppingApp.xcodeproj/project.pbxproj
+          ShoppingApp.xcodeproj/project.pbxproj
+          sed -i '' 's/DEVELOPMENT_TEAM = J38J9AUL72;/DEVELOPMENT_TEAM = 39Z5QDFQQG;/g' \
+          ShoppingApp.xcodeproj/project.pbxproj
+          sed -i '' 's/DEVELOPMENT_TEAM = 6DZRWX4XK8;/DEVELOPMENT_TEAM = 39Z5QDFQQG;/g' \
+          ShoppingApp.xcodeproj/project.pbxproj
 
 
       - name: Remove Wallet Capability
@@ -74,18 +74,16 @@ jobs:
 
       - name: Build & Archive
         run: |
-          xcodebuild \
-            -workspace ShoppingApp.xcworkspace \
-            -scheme ShoppingApp \
-            -configuration Release \
-            -destination generic/platform=iOS \
-            CODE_SIGN_STYLE=Manual \
-            DEVELOPMENT_TEAM=6DZRWX4XK8 \
-            PROVISIONING_PROFILE_SPECIFIER="iOS Team Provisioning Profile: com.stylix.tryon" \
-            archive \
-            -archivePath $RUNNER_TEMP/app.xcarchive
-        env:
-          CODESIGN_ALLOCATE: /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/codesign_allocate
+         xcodebuild \
+         -workspace ShoppingApp.xcworkspace \
+         -scheme ShoppingApp \
+         -configuration Release \
+         -destination generic/platform=iOS \
+         CODE_SIGN_STYLE=Manual \
+         DEVELOPMENT_TEAM=39Z5QDFQQG \
+         PROVISIONING_PROFILE_SPECIFIER="iOS Team Provisioning Profile: com.stylix.tryon" \
+         archive \
+         -archivePath $RUNNER_TEMP/app.xcarchive
       - name: Export IPA
         run: |
           xcodebuild \
