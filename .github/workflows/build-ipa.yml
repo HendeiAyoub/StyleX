@@ -44,11 +44,10 @@ jobs:
           echo "$PROVISION_BASE64" | base64 --decode > \
             ~/Library/Developer/Xcode/UserData/Provisioning\ Profiles/profile.mobileprovision
 
-      - name: Force Manual Signing
+      - name: Force Automatic Signing
         run: |
-          sed -i '' 's/CODE_SIGN_STYLE = Automatic;/CODE_SIGN_STYLE = Manual;/g' \
+          sed -i '' 's/CODE_SIGN_STYLE = Manual;/CODE_SIGN_STYLE = Automatic;/g' \
             ShoppingApp.xcodeproj/project.pbxproj
-
       - name: Patch Bundle ID and Team
         run: |
           sed -i '' 's/ml\.ShoppingApp\.ShoppingAppWidget/com.stylix.tryon.widget/g' \
@@ -74,16 +73,18 @@ jobs:
 
       - name: Build & Archive
         run: |
-         xcodebuild \
-         -workspace ShoppingApp.xcworkspace \
-         -scheme ShoppingApp \
-         -configuration Release \
-         -destination generic/platform=iOS \
-         CODE_SIGN_STYLE=Manual \
-         DEVELOPMENT_TEAM=39Z5QDFQQG \
-         PROVISIONING_PROFILE_SPECIFIER="iOS Team Provisioning Profile: com.stylix.tryon" \
-         archive \
-         -archivePath $RUNNER_TEMP/app.xcarchive
+          xcodebuild \
+            -workspace ShoppingApp.xcworkspace \
+            -scheme ShoppingApp \
+            -configuration Release \
+            -destination generic/platform=iOS \
+            CODE_SIGN_STYLE=Automatic \
+            DEVELOPMENT_TEAM=39Z5QDFQQG \
+            -allowProvisioningUpdates \
+            archive \
+            -archivePath $RUNNER_TEMP/app.xcarchive
+        env:
+          CODESIGN_ALLOCATE: /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/codesign_allocate
       - name: Export IPA
         run: |
           xcodebuild \
