@@ -22,8 +22,7 @@ jobs:
           pod install
             - name: Install CocoaPods
               run: |
-                cd ShoppingApp  # adjust if Podfile is in root
-                pod install
+               pod install
 
       - name: Import Certificate
         env:
