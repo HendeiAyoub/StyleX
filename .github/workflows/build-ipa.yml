@@ -63,11 +63,11 @@ jobs:
             -destination generic/platform=iOS \
             CODE_SIGN_STYLE=Automatic \
             DEVELOPMENT_TEAM=J38J9AUL72 \
+            -allowProvisioningUpdates \
             archive \
             -archivePath $RUNNER_TEMP/app.xcarchive
         env:
           CODESIGN_ALLOCATE: /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/codesign_allocate
-
       - name: Export IPA
         run: |
           xcodebuild \
