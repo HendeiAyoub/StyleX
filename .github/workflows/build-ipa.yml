@@ -60,10 +60,7 @@ jobs:
           sed -i '' 's/DEVELOPMENT_TEAM = 39Z5QDFQQG;/DEVELOPMENT_TEAM = 6DZRWX4XK8;/g' \
             ShoppingApp.xcodeproj/project.pbxproj
 
-      - name: Remove Widget From Build
-        run: |
-          sed -i '' '/ShoppingAppWidgetExtension/d' \
-            ShoppingApp.xcodeproj/project.pbxproj
+
       - name: Remove Wallet Capability
         run: |
           sed -i '' '/com.apple.developer.pass-type-identifiers/,/\/array/d' \
