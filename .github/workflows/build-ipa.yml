@@ -3,6 +3,7 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+
 jobs:
   build:
     runs-on: macos-latest
@@ -16,40 +17,54 @@ jobs:
           npm install
 
       - name: Install CocoaPods
-        run: |
-          pod install
+        run: pod install
 
-      - name: Install Certificate
+      # ---------- Certificate & Keychain ----------
+      - name: Setup Keychain and Certificate
         env:
           P12_BASE64: ${{ secrets.CERTIFICATE_P12 }}
           P12_PASSWORD: ${{ secrets.CERTIFICATE_PASSWORD }}
+          KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
         run: |
-          CERTIFICATE_PATH=$RUNNER_TEMP/certificate.p12
-          echo "$P12_BASE64" | base64 --decode > $CERTIFICATE_PATH
-          security create-keychain -p "${{ secrets.KEYCHAIN_PASSWORD }}" build.keychain
-          security import $CERTIFICATE_PATH -k build.keychain -P "$P12_PASSWORD" -A
-          security list-keychains -s build.keychain
+          # Create a temporary keychain
+          security create-keychain -p "$KEYCHAIN_PASSWORD" build.keychain
           security default-keychain -s build.keychain
-          security unlock-keychain -p "${{ secrets.KEYCHAIN_PASSWORD }}" build.keychain
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" build.keychain
           security set-keychain-settings -t 3600 -u build.keychain
 
-      - name: Install Provisioning Profile
+          # Import the certificate
+          echo "$P12_BASE64" | base64 --decode > certificate.p12
+          security import certificate.p12 -k build.keychain -P "$P12_PASSWORD" -A -T /usr/bin/codesign
+
+          # Allow codesign to access the private key
+          security set-key-partition-list -S apple-tool:,apple: -s -k "$KEYCHAIN_PASSWORD" build.keychain
+
+      # ---------- Provisioning Profiles (Main + Widget) ----------
+      - name: Install Provisioning Profiles
         env:
-          PROVISION_BASE64: ${{ secrets.PROVISIONING_PROFILE }}
+          PROFILE_MAIN: ${{ secrets.PROVISIONING_PROFILE_MAIN }}
+          PROFILE_WIDGET: ${{ secrets.PROVISIONING_PROFILE_WIDGET }}
         run: |
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
-          echo "$PROVISION_BASE64" | base64 --decode > \
-            ~/Library/MobileDevice/Provisioning\ Profiles/profile.mobileprovision
-          mkdir -p ~/Library/Developer/Xcode/UserData/Provisioning\ Profiles
-          echo "$PROVISION_BASE64" | base64 --decode > \
-            ~/Library/Developer/Xcode/UserData/Provisioning\ Profiles/profile.mobileprovision
+          
+          # Main app profile
+          echo "$PROFILE_MAIN" | base64 --decode > ~/Library/MobileDevice/Provisioning\ Profiles/main_profile.mobileprovision
+          
+          # Widget extension profile
+          echo "$PROFILE_WIDGET" | base64 --decode > ~/Library/MobileDevice/Provisioning\ Profiles/widget_profile.mobileprovision
 
-      - name: Force Automatic Signing
+          # Optional: verify profile UUIDs
+          echo "Installed profiles:"
+          ls -la ~/Library/MobileDevice/Provisioning\ Profiles/
+
+      # ---------- Force Automatic Signing (Optional) ----------
+      - name: Force Automatic Signing (if needed)
         run: |
           sed -i '' 's/CODE_SIGN_STYLE = Manual;/CODE_SIGN_STYLE = Automatic;/g' \
-            ShoppingApp.xcodeproj/project.pbxproj
+            ShoppingApp.xcodeproj/project.pbxproj || true
 
-      - name: Patch Bundle ID and Team
+      # ---------- Patch Bundle IDs & Team (Optional) ----------
+      - name: Patch Bundle IDs and Team
         run: |
           sed -i '' 's/ml\.ShoppingApp\.ShoppingAppWidget/com.stylix.tryon.widget/g' \
             ShoppingApp.xcodeproj/project.pbxproj
@@ -58,11 +73,7 @@ jobs:
           sed -i '' 's/DEVELOPMENT_TEAM = J38J9AUL72;/DEVELOPMENT_TEAM = 39Z5QDFQQG;/g' \
             ShoppingApp.xcodeproj/project.pbxproj
 
-      - name: Unlock Keychain
-        run: |
-          security unlock-keychain -p "${{ secrets.KEYCHAIN_PASSWORD }}" build.keychain
-          security set-key-partition-list -S apple-tool:,apple: -s -k "${{ secrets.KEYCHAIN_PASSWORD }}" build.keychain
-
+      # ---------- Build & Archive ----------
       - name: Build & Archive
         run: |
           xcodebuild \
@@ -78,6 +89,7 @@ jobs:
         env:
           CODESIGN_ALLOCATE: /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/codesign_allocate
 
+      # ---------- Export IPA ----------
       - name: Export IPA
         run: |
           xcodebuild \
