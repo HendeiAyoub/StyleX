@@ -60,37 +60,29 @@ jobs:
           sed -i '' 's/DEVELOPMENT_TEAM = 6DZRWX4XK8;/DEVELOPMENT_TEAM = 39Z5QDFQQG;/g' \
             ShoppingApp.xcodeproj/project.pbxproj
 
-      - name: Remove Widget From Scheme
+      - name: Remove Widget From Project
         run: |
           python3 - <<'EOF'
-          import xml.etree.ElementTree as ET
-          import glob
+          import re
       
-          scheme_files = glob.glob('ShoppingApp.xcodeproj/xcshareddata/xcschemes/*.xcscheme')
-          if not scheme_files:
-              scheme_files = glob.glob('ShoppingApp.xcodeproj/**/*.xcscheme', recursive=True)
+          with open('ShoppingApp.xcodeproj/project.pbxproj', 'r') as f:
+              content = f.read()
       
-          for scheme_file in scheme_files:
-              print(f"Processing: {scheme_file}")
-              tree = ET.parse(scheme_file)
-              root = tree.getroot()
+          # Remove widget lines from all build phases (embed, copy, dependency refs)
+          lines = content.split('\n')
+          cleaned = []
+          for line in lines:
+              if 'ShoppingAppWidget' in line or 'WidgetExtension' in line:
+                  print(f"REMOVED: {line.strip()}")
+                  continue
+              cleaned.append(line)
       
-              build_action = root.find('BuildAction')
-              if build_action:
-                  entries = build_action.find('BuildActionEntries')
-                  if entries:
-                      to_remove = []
-                      for entry in entries.findall('BuildActionEntry'):
-                          ref = entry.find('BuildableReference')
-                          if ref is not None and 'Widget' in ref.get('BlueprintName', ''):
-                              to_remove.append(entry)
-                              print(f"Removing: {ref.get('BlueprintName')}")
-                      for entry in to_remove:
-                          entries.remove(entry)
+          new_content = '\n'.join(cleaned)
       
-              ET.register_namespace('', '')
-              tree.write(scheme_file, xml_declaration=True, encoding='unicode')
-              print("Done")
+          with open('ShoppingApp.xcodeproj/project.pbxproj', 'w') as f:
+              f.write(new_content)
+      
+          print("Done - all widget references removed from project")
           EOF
 
       - name: Remove Wallet Capability
