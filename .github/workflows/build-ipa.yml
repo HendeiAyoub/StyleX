@@ -48,35 +48,33 @@ jobs:
         run: |
           sed -i '' 's/CODE_SIGN_STYLE = Manual;/CODE_SIGN_STYLE = Automatic;/g' \
             ShoppingApp.xcodeproj/project.pbxproj
+
       - name: Patch Bundle ID and Team
         run: |
           sed -i '' 's/ml\.ShoppingApp\.ShoppingAppWidget/com.stylix.tryon.widget/g' \
-          ShoppingApp.xcodeproj/project.pbxproj
+            ShoppingApp.xcodeproj/project.pbxproj
           sed -i '' 's/ml\.ShoppingApp/com.stylix.tryon/g' \
-          ShoppingApp.xcodeproj/project.pbxproj
+            ShoppingApp.xcodeproj/project.pbxproj
           sed -i '' 's/DEVELOPMENT_TEAM = J38J9AUL72;/DEVELOPMENT_TEAM = 39Z5QDFQQG;/g' \
-          ShoppingApp.xcodeproj/project.pbxproj
+            ShoppingApp.xcodeproj/project.pbxproj
           sed -i '' 's/DEVELOPMENT_TEAM = 6DZRWX4XK8;/DEVELOPMENT_TEAM = 39Z5QDFQQG;/g' \
-          ShoppingApp.xcodeproj/project.pbxproj
+            ShoppingApp.xcodeproj/project.pbxproj
 
-      - name: Exclude Widget From Signing
+      - name: Disable Widget Signing
         run: |
           python3 - <<'EOF'
-          import re
-      
           with open('ShoppingApp.xcodeproj/project.pbxproj', 'r') as f:
               content = f.read()
-      
-          # Find widget target and set it to skip signing
+
           content = content.replace(
               'PRODUCT_BUNDLE_IDENTIFIER = "com.stylix.tryon.widget";',
-              'PRODUCT_BUNDLE_IDENTIFIER = "com.stylix.tryon.widget";\n\t\t\t\tCODE_SIGNING_ALLOWED = NO;'
+              'PRODUCT_BUNDLE_IDENTIFIER = "com.stylix.tryon.widget";\n\t\t\t\tCODE_SIGNING_ALLOWED = NO;\n\t\t\t\tCODE_SIGNING_REQUIRED = NO;'
           )
-      
+
           with open('ShoppingApp.xcodeproj/project.pbxproj', 'w') as f:
               f.write(content)
-      
-          print("Done")
+
+          print("Widget signing disabled")
           EOF
 
       - name: Remove Wallet Capability
@@ -85,6 +83,7 @@ jobs:
             ShoppingApp/ShoppingApp.entitlements
           sed -i '' '/com.apple.wallet/d' \
             ShoppingApp/ShoppingApp.entitlements
+
       - name: Unlock Keychain
         run: |
           security unlock-keychain -p "${{ secrets.KEYCHAIN_PASSWORD }}" build.keychain
@@ -104,6 +103,7 @@ jobs:
             -archivePath $RUNNER_TEMP/app.xcarchive
         env:
           CODESIGN_ALLOCATE: /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/codesign_allocate
+
       - name: Export IPA
         run: |
           xcodebuild \
