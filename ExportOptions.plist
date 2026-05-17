@@ -8,12 +8,5 @@
     <string>39Z5QDFQQG</string>
     <key>signingStyle</key>
     <string>automatic</string>
-    <key>provisioningProfiles</key>
-    <dict>
-        <key>com.stylix.tryon</key>
-        <string>YourMainProfileName</string>   <!-- optional but helpful -->
-        <key>com.stylix.tryon.widget</key>
-        <string>YourWidgetProfileName</string>
-    </dict>
 </dict>
 </plist>
