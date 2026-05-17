@@ -59,6 +59,25 @@ jobs:
           sed -i '' 's/DEVELOPMENT_TEAM = 6DZRWX4XK8;/DEVELOPMENT_TEAM = 39Z5QDFQQG;/g' \
           ShoppingApp.xcodeproj/project.pbxproj
 
+      - name: Exclude Widget From Signing
+        run: |
+          python3 - <<'EOF'
+          import re
+      
+          with open('ShoppingApp.xcodeproj/project.pbxproj', 'r') as f:
+              content = f.read()
+      
+          # Find widget target and set it to skip signing
+          content = content.replace(
+              'PRODUCT_BUNDLE_IDENTIFIER = "com.stylix.tryon.widget";',
+              'PRODUCT_BUNDLE_IDENTIFIER = "com.stylix.tryon.widget";\n\t\t\t\tCODE_SIGNING_ALLOWED = NO;'
+          )
+      
+          with open('ShoppingApp.xcodeproj/project.pbxproj', 'w') as f:
+              f.write(content)
+      
+          print("Done")
+          EOF
 
       - name: Remove Wallet Capability
         run: |
