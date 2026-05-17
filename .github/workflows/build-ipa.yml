@@ -63,18 +63,34 @@ jobs:
       - name: Disable Widget Signing
         run: |
           python3 - <<'EOF'
+          import re
+
           with open('ShoppingApp.xcodeproj/project.pbxproj', 'r') as f:
               content = f.read()
 
-          content = content.replace(
-              'PRODUCT_BUNDLE_IDENTIFIER = "com.stylix.tryon.widget";',
-              'PRODUCT_BUNDLE_IDENTIFIER = "com.stylix.tryon.widget";\n\t\t\t\tCODE_SIGNING_ALLOWED = NO;\n\t\t\t\tCODE_SIGNING_REQUIRED = NO;'
-          )
+          # Debug: print every line that mentions the widget bundle
+          print("=== Lines containing widget bundle ID ===")
+          for i, line in enumerate(content.split('\n')):
+              if 'widget' in line.lower() and 'bundle' in line.lower():
+                  print(f"Line {i}: {repr(line)}")
+
+          # Regex handles any quoting/spacing variation
+          pattern = r'(PRODUCT_BUNDLE_IDENTIFIER\s*=\s*["\']?com\.stylix\.tryon\.widget["\']?\s*;)'
+          replacement = r'\1\n\t\t\t\tCODE_SIGNING_ALLOWED = NO;\n\t\t\t\tCODE_SIGNING_REQUIRED = NO;'
+
+          new_content, count = re.subn(pattern, replacement, content)
+          print(f"\n=== Made {count} replacement(s) ===")
+
+          if count == 0:
+              # Fallback: try original name in case patch step didn't rename it
+              pattern2 = r'(PRODUCT_BUNDLE_IDENTIFIER\s*=\s*["\']?ml\.ShoppingApp\.ShoppingAppWidget["\']?\s*;)'
+              new_content, count2 = re.subn(pattern2, replacement, content)
+              print(f"Fallback replacements: {count2}")
 
           with open('ShoppingApp.xcodeproj/project.pbxproj', 'w') as f:
-              f.write(content)
+              f.write(new_content)
 
-          print("Widget signing disabled")
+          print("Done")
           EOF
 
       - name: Remove Wallet Capability
