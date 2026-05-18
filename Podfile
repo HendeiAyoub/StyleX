@@ -34,8 +34,7 @@ target 'ShoppingApp' do
   )
 
   target 'ShoppingAppWidgetExtension' do
-    inherit! :complete
-    # Pods for testing
+
   end
   
   target 'ShoppingAppTests' do
