@@ -33,7 +33,7 @@ final class ShoppingAppUITests: XCTestCase {
     let firstProduct = app.buttons.matching(identifier: "ProductCard").firstMatch
     if firstProduct.exists {
       firstProduct.tap()
-      
+
       // 6. Like/heart button works
       let likeButton = app.buttons["LikeButton"]
       if likeButton.exists {
@@ -68,7 +68,7 @@ final class ShoppingAppUITests: XCTestCase {
     // We wait for the Stylist is typing... indicator to go away, and the result to appear
     let typingIndicator = app.staticTexts["Stylist is typing..."]
     XCTAssertTrue(typingIndicator.waitForExistence(timeout: 2))
-    
+
     // Wait for response to finish (the fallback is fast)
     let predicate = NSPredicate(format: "exists == false")
     expectation(for: predicate, evaluatedWith: typingIndicator, handler: nil)

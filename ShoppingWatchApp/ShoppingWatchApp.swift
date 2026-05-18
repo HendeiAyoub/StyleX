@@ -1,3 +1,10 @@
+//
+//  ShoppingWatchApp.swift
+//  ShoppingWatchApp
+//
+//  Created by Youbi William on 17/09/24.
+//
+
 import XCTest
 
 final class ShoppingWatchApp: XCTestCase {

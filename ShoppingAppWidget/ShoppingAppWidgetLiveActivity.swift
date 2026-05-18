@@ -1,4 +1,9 @@
-
+//
+//  ShoppingAppWidgetLiveActivity.swift
+//  ShoppingAppWidget
+//
+//  Created by Youbi William on 15/06/24.
+//
 
 import ActivityKit
 import SwiftUI
