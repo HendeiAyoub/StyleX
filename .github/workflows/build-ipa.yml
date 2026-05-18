@@ -62,6 +62,12 @@ jobs:
       - name: Remove Widget From Build
         run: python3 .github/scripts/fix_widget.py
 
+      - name: Verify widget dependency removed
+        run: |
+            echo "Remaining widget references:"
+            grep -n "ShoppingAppWidgetExtension" ShoppingApp.xcodeproj/project.pbxproj || echo "NONE - widget fully removed"
+            plutil -lint ShoppingApp.xcodeproj/project.pbxproj && echo "pbxproj is VALID"
+
       - name: Remove Wallet Capability
         run: |
           sed -i '' '/com.apple.developer.pass-type-identifiers/,/\/array/d' \
