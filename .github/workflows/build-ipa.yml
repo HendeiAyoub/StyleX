@@ -60,7 +60,7 @@ jobs:
           sed -i '' 's/DEVELOPMENT_TEAM = 6DZRWX4XK8;/DEVELOPMENT_TEAM = 39Z5QDFQQG;/g' \
             ShoppingApp.xcodeproj/project.pbxproj
 
-      - name: Remove Widget From Project
+      - name: Remove Widget Embed Reference Only
         run: |
           python3 - <<'EOF'
           import re
@@ -68,21 +68,30 @@ jobs:
           with open('ShoppingApp.xcodeproj/project.pbxproj', 'r') as f:
               content = f.read()
       
-          # Remove widget lines from all build phases (embed, copy, dependency refs)
-          lines = content.split('\n')
-          cleaned = []
-          for line in lines:
-              if 'ShoppingAppWidget' in line or 'WidgetExtension' in line:
-                  print(f"REMOVED: {line.strip()}")
-                  continue
-              cleaned.append(line)
+          original_len = len(content.splitlines())
       
-          new_content = '\n'.join(cleaned)
+          # Remove ONLY the line that embeds the widget into the main app
+          content = re.sub(
+              r'[^\n]*ShoppingAppWidgetExtension\.appex in Embed Foundation Extensions[^\n]*\n',
+              '',
+              content
+          )
+      
+          # Remove ONLY the target dependency list entry referencing the widget target
+          # (the line inside the main target's dependencies array)
+          content = re.sub(
+              r'[^\n]*3F2367FA2C1D4A3900B1F054 /\* ShoppingAppWidgetExtension \*/[^\n]*\n',
+              '',
+              content
+          )
+      
+          new_len = len(content.splitlines())
+          print(f"Removed {original_len - new_len} lines (expected: 2)")
       
           with open('ShoppingApp.xcodeproj/project.pbxproj', 'w') as f:
-              f.write(new_content)
+              f.write(content)
       
-          print("Done - all widget references removed from project")
+          print("Done - pbxproj structure intact, widget embed removed")
           EOF
 
       - name: Remove Wallet Capability
