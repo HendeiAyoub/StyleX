@@ -1,3 +1,5 @@
+import Foundation
+
 public class Product: Hashable {
   public static func == (lhs: Product, rhs: Product) -> Bool {
     return lhs.id == rhs.id
@@ -8,6 +10,7 @@ public class Product: Hashable {
       && lhs.description == rhs.description
       && lhs.isPromotion == rhs.isPromotion
       && lhs.valuePromotion == rhs.valuePromotion
+      && lhs.colors == rhs.colors
   }
 
   var category: String
@@ -18,6 +21,8 @@ public class Product: Hashable {
   var description: String
   var isPromotion: Bool
   var valuePromotion: Int
+  var colors: [AIColor]
+  var embedding: [Double]
 
   public init(
     id: Int,
@@ -27,7 +32,9 @@ public class Product: Hashable {
     title: String,
     description: String,
     isPromotion: Bool,
-    valuePromotion: Int
+    valuePromotion: Int,
+    colors: [AIColor] = [],
+    embedding: [Double] = []
   ) {
     self.id = id
     self.title = title
@@ -37,6 +44,8 @@ public class Product: Hashable {
     self.description = description
     self.isPromotion = isPromotion
     self.valuePromotion = valuePromotion
+    self.colors = colors
+    self.embedding = embedding
   }
 
   public func hash(into hasher: inout Hasher) {
@@ -48,5 +57,38 @@ public class Product: Hashable {
     hasher.combine(description)
     hasher.combine(isPromotion)
     hasher.combine(valuePromotion)
+    hasher.combine(colors)
+  }
+}
+
+public struct AIColor: Hashable, Codable {
+  let hexCode: String
+  let label: String
+  let dominance: Double
+
+  public init(hexCode: String, label: String, dominance: Double) {
+    self.hexCode = hexCode
+    self.label = label
+    self.dominance = dominance
+  }
+}
+
+struct StyleSuggestion: Codable {
+  let styleTip: String
+  let bestOccasion: String
+  let warning: String
+}
+
+struct ChatMessage: Identifiable, Codable, Hashable {
+  let id: UUID
+  let role: String
+  let content: String
+  let recommendedProductIds: [Int]
+
+  init(id: UUID = UUID(), role: String, content: String, recommendedProductIds: [Int] = []) {
+    self.id = id
+    self.role = role
+    self.content = content
+    self.recommendedProductIds = recommendedProductIds
   }
 }

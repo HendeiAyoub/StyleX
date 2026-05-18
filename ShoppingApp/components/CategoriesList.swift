@@ -14,10 +14,16 @@ struct CategoriesList: View {
           } label: {
             VStack {
               VStack {
-                Image(category)
-                  .resizable()
-                  .aspectRatio(contentMode: .fill)
-                  .frame(width: 26, height: 26)
+                if UIImage(named: category) != nil {
+                  Image(category)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 26, height: 26)
+                } else {
+                  Image(systemName: category == "all" ? "sparkles" : "tag")
+                    .foregroundStyle(Color.white)
+                    .frame(width: 26, height: 26)
+                }
               }
               .frame(width: 48, height: 48)
               .background(
@@ -49,7 +55,6 @@ struct CategoriesList: View {
       await Shoppingservice.getCategories {
         categories in
         categoriesArray = categories
-        categoriesArray.append("all")
       }
     }
   }

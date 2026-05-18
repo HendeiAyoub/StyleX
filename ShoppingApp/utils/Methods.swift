@@ -13,7 +13,9 @@ enum Utils {
       title: product.value(forKey: "title") as! String,
       description: product.value(forKey: "description") as! String,
       isPromotion: isPromotion,
-      valuePromotion: valuePromotion
+      valuePromotion: valuePromotion,
+      colors: DemoStore.localColors(for: product.value(forKey: "id") as! Int),
+      embedding: DemoStore.localEmbedding(for: product.value(forKey: "id") as! Int)
     )
     return newProduct
   }
@@ -27,7 +29,9 @@ enum Utils {
       title: "",
       description: "",
       isPromotion: false,
-      valuePromotion: 0
+      valuePromotion: 0,
+      colors: [],
+      embedding: []
     )
   }
 

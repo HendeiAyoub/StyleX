@@ -1,17 +1,9 @@
 import Foundation
-import React
+import UIKit
 
 class ModuleViewController: UIViewController {
   override func viewDidLoad() {
-    if let bridge = BridgeManager.shared.bridge {
-      view = RCTRootView(
-        bridge: bridge,
-        moduleName: "ShoppingAppModuleRN",
-        initialProperties: [
-          "type": "screen",
-          "value": "offers",
-        ]
-      )
-    }
+    view = UIView()
+    view.backgroundColor = .systemBackground
   }
 }
