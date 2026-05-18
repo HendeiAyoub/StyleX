@@ -60,11 +60,7 @@ jobs:
             ShoppingApp.xcodeproj/project.pbxproj
 
       - name: Remove Widget From Build
-              run: |
-                sed -i '' '/appex in Embed Foundation Extensions/d' \
-                  ShoppingApp.xcodeproj/project.pbxproj
-                sed -i '' 's/PRODUCT_BUNDLE_IDENTIFIER = "com\.stylix\.tryon\.widget";/PRODUCT_BUNDLE_IDENTIFIER = "com.stylix.tryon.widget";\nCODE_SIGNING_ALLOWED = NO;\nCODE_SIGNING_REQUIRED = NO;/g' \
-                  ShoppingApp.xcodeproj/project.pbxproj
+              run: python3 .github/scripts/fix_widget.py
 
       - name: Remove Wallet Capability
         run: |
