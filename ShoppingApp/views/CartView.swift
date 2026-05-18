@@ -23,10 +23,9 @@ struct CartView: View {
     VStack {
       VStack(alignment: .center) {
         if isFromBottomTab {
-          Image("logoColor")
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(minWidth: 0, maxWidth: 180)
+          LogoView(size: 32, isDarkTheme: false)
+            .padding(.top, 16)
+            .padding(.bottom, 8)
         }
         List {
           ForEach(Array(cartItems.enumerated()), id: \.element) { _, cartItem in

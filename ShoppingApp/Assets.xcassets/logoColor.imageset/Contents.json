@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "logo_shopping_app_COLOR 2.png",
+      "filename" : "logo_StyleX_COLOR 2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "logo_shopping_app_COLOR 1.png",
+      "filename" : "logo_StyleX_COLOR 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "logo_shopping_app_COLOR.png",
+      "filename" : "logo_StyleX_COLOR.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
@@ -21,3 +21,4 @@
     "version" : 1
   }
 }
+
