@@ -60,7 +60,7 @@ jobs:
             ShoppingApp.xcodeproj/project.pbxproj
 
       - name: Remove Widget From Build
-              run: python3 .github/scripts/fix_widget.py
+        run: python3 .github/scripts/fix_widget.py
 
       - name: Remove Wallet Capability
         run: |
