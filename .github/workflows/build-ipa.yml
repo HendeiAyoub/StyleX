@@ -16,8 +16,7 @@ jobs:
           npm install
 
       - name: Install CocoaPods
-        run: |
-          pod install
+        run: pod install
 
       - name: Install Certificate
         env:
@@ -62,21 +61,12 @@ jobs:
 
       - name: Remove Widget From Build
         run: |
+          NL=$'\n'
+          TAB=$'\t\t\t\t'
           sed -i '' '/appex in Embed Foundation Extensions/d' \
             ShoppingApp.xcodeproj/project.pbxproj
-          python3 -c '
-import re
-with open("ShoppingApp.xcodeproj/project.pbxproj", "r") as f:
-    content = f.read()
-content = re.sub(
-    r"(PRODUCT_BUNDLE_IDENTIFIER = \"com\.stylix\.tryon\.widget\";)",
-    "\\1\n\t\t\t\tCODE_SIGNING_ALLOWED = NO;\n\t\t\t\tCODE_SIGNING_REQUIRED = NO;",
-    content
-)
-with open("ShoppingApp.xcodeproj/project.pbxproj", "w") as f:
-    f.write(content)
-print("Done - embed removed, widget signing disabled")
-'
+          sed -i '' "s/PRODUCT_BUNDLE_IDENTIFIER = \"com\.stylix\.tryon\.widget\";/PRODUCT_BUNDLE_IDENTIFIER = \"com.stylix.tryon.widget\";${NL}${TAB}CODE_SIGNING_ALLOWED = NO;${NL}${TAB}CODE_SIGNING_REQUIRED = NO;/g" \
+            ShoppingApp.xcodeproj/project.pbxproj
 
       - name: Remove Wallet Capability
         run: |
