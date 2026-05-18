@@ -10,6 +10,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Validate pbxproj after checkout
+        run: |
+          plutil -lint ShoppingApp.xcodeproj/project.pbxproj && echo "✅ pbxproj VALID after checkout" || echo "❌ pbxproj INVALID after checkout"
+          echo "Line count: $(wc -l < ShoppingApp.xcodeproj/project.pbxproj)"
+
       - name: Install JS Dependencies
         run: |
           cd ShoppingModuleRN
@@ -18,6 +23,11 @@ jobs:
       - name: Install CocoaPods
         run: |
           pod install
+
+      - name: Validate pbxproj after pod install
+        run: |
+          plutil -lint ShoppingApp.xcodeproj/project.pbxproj && echo "✅ pbxproj VALID after pod install" || echo "❌ pbxproj INVALID after pod install"
+          echo "Line count: $(wc -l < ShoppingApp.xcodeproj/project.pbxproj)"
 
       - name: Install Certificate
         env:
@@ -48,6 +58,7 @@ jobs:
         run: |
           sed -i '' 's/CODE_SIGN_STYLE = Manual;/CODE_SIGN_STYLE = Automatic;/g' \
             ShoppingApp.xcodeproj/project.pbxproj
+          plutil -lint ShoppingApp.xcodeproj/project.pbxproj && echo "✅ VALID after Force Automatic Signing" || echo "❌ INVALID after Force Automatic Signing"
 
       - name: Patch Bundle ID and Team
         run: |
@@ -59,56 +70,74 @@ jobs:
             ShoppingApp.xcodeproj/project.pbxproj
           sed -i '' 's/DEVELOPMENT_TEAM = 6DZRWX4XK8;/DEVELOPMENT_TEAM = 39Z5QDFQQG;/g' \
             ShoppingApp.xcodeproj/project.pbxproj
+          plutil -lint ShoppingApp.xcodeproj/project.pbxproj && echo "✅ VALID after Patch Bundle ID" || echo "❌ INVALID after Patch Bundle ID"
 
-      - name: Remove Widget Embed Reference Only
+      - name: Remove Widget From Build
         run: |
-          python3 - <<'EOF'
-          import re
-      
-          with open('ShoppingApp.xcodeproj/project.pbxproj', 'r') as f:
-              content = f.read()
-      
-          original_len = len(content.splitlines())
-      
-          # Remove ONLY the line that embeds the widget into the main app
-          content = re.sub(
-              r'[^\n]*ShoppingAppWidgetExtension\.appex in Embed Foundation Extensions[^\n]*\n',
-              '',
-              content
-          )
-      
-          # Remove ONLY the target dependency list entry referencing the widget target
-          # (the line inside the main target's dependencies array)
-          content = re.sub(
-              r'[^\n]*3F2367FA2C1D4A3900B1F054 /\* ShoppingAppWidgetExtension \*/[^\n]*\n',
-              '',
-              content
-          )
-      
-          new_len = len(content.splitlines())
-          print(f"Removed {original_len - new_len} lines (expected: 2)")
-      
-          with open('ShoppingApp.xcodeproj/project.pbxproj', 'w') as f:
-              f.write(content)
-      
-          print("Done - pbxproj structure intact, widget embed removed")
-          EOF
+          python3 <<'PYEOF'
+import re, sys
+
+with open('ShoppingApp.xcodeproj/project.pbxproj', 'r') as f:
+    content = f.read()
+
+original_len = len(content.splitlines())
+
+# Find widget target ID dynamically (don't rely on hardcoded IDs)
+widget_target_match = re.search(
+    r'(/\* Begin PBXNativeTarget section \*/.*?)'
+    r'(\w{24}) /\* ShoppingAppWidgetExtension \*/ = \{',
+    content, re.DOTALL
+)
+
+if widget_target_match:
+    widget_id = widget_target_match.group(2)
+    print(f"Found widget target ID: {widget_id}")
+else:
+    print("Widget target ID not found - searching by appex reference")
+    widget_id = None
+
+# 1. Remove the embed build file line (causes "embedded binary not signed" error)
+content, n1 = re.subn(
+    r'[^\n]*\.appex in Embed Foundation Extensions[^\n]*\n',
+    '', content
+)
+print(f"Removed {n1} embed reference line(s)")
+
+# 2. Remove target dependency reference in main target's dependencies array
+if widget_id:
+    content, n2 = re.subn(
+        rf'[^\n]*{widget_id} /\* ShoppingAppWidgetExtension \*/[^\n]*\n',
+        '', content
+    )
+    print(f"Removed {n2} target dependency line(s)")
+
+new_len = len(content.splitlines())
+print(f"Total lines removed: {original_len - new_len}")
+
+with open('ShoppingApp.xcodeproj/project.pbxproj', 'w') as f:
+    f.write(content)
+
+print("Done")
+PYEOF
+          plutil -lint ShoppingApp.xcodeproj/project.pbxproj && echo "✅ VALID after Remove Widget" || echo "❌ INVALID after Remove Widget"
 
       - name: Remove Wallet Capability
         run: |
           sed -i '' '/com.apple.developer.pass-type-identifiers/,/\/array/d' \
-            ShoppingApp/ShoppingApp.entitlements
+            ShoppingApp/ShoppingApp.entitlements || true
           sed -i '' '/com.apple.wallet/d' \
-            ShoppingApp/ShoppingApp.entitlements
+            ShoppingApp/ShoppingApp.entitlements || true
+
+      - name: Fix NSBundle Swift Error
+        run: |
+          sed -i '' 's/NSBundle\.main/Bundle.main/g' \
+            ShoppingApp/managers/BridgeManager.swift
 
       - name: Unlock Keychain
         run: |
           security unlock-keychain -p "${{ secrets.KEYCHAIN_PASSWORD }}" build.keychain
           security set-key-partition-list -S apple-tool:,apple: -s -k "${{ secrets.KEYCHAIN_PASSWORD }}" build.keychain
-      - name: Fix NSBundle Swift Error
-        run: |
-          sed -i '' 's/NSBundle\.main/Bundle.main/g' \
-            ShoppingApp/managers/BridgeManager.swift
+
       - name: Build & Archive
         run: |
           xcodebuild \
