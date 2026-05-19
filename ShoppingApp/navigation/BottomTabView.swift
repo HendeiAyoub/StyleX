@@ -26,14 +26,24 @@ struct BottomTabView: View {
       .tag(1)
 
       NavigationStack {
-        CartView(isFromBottomTab: true)
+        ProfileView()
       }
       .tabItem {
-        Text("Cart")
-        Image(systemName: "cart")
+        Text("Profile")
+        Image(systemName: "person.circle")
           .renderingMode(.template)
       }
       .tag(2)
+
+      NavigationStack {
+        ParameterView()
+      }
+      .tabItem {
+        Text("Parameter")
+        Image(systemName: "gearshape")
+          .renderingMode(.template)
+      }
+      .tag(3)
     }
   }
 }
