@@ -21,6 +21,7 @@ target 'ShoppingApp' do
   config = {
     :reactNativePath => react_native_path
   }
+
   use_react_native!(
     :path => config[:reactNativePath],
     :app_path => react_native_app_path
@@ -34,10 +35,11 @@ target 'ShoppingApp' do
     inherit! :complete
   end
 
-  target 'ShoppingAppWidgetExtension' do
-    inherit! :search_paths
-  end
+end
 
+# Widget Extension as a standalone target (NOT nested), with explicit host
+target 'ShoppingAppWidgetExtension' do
+  inherit! :search_paths
 end
 
 post_install do |installer|
