@@ -30,7 +30,7 @@ target 'ShoppingApp' do
     inherit! :complete
   end
 
-  target 'ShoppingApp-ShoppingAppWidgetExtension' do
+  target 'ShoppingAppWidgetExtension' do
     inherit! :search_paths
   end
 end
