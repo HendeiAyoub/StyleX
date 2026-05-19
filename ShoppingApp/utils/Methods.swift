@@ -3,8 +3,31 @@ import SwiftUI
 
 enum Utils {
   public static func buildNewProductFromObject(product: NSObject) -> Product {
-    let isPromotion = Bool.random()
-    let valuePromotion = Int.random(in: 1 ..< 15)
+    let isPromotion = (product.value(forKey: "isPromotion") as? Bool) ?? Bool.random()
+    let valuePromotion = (product.value(forKey: "valuePromotion") as? Int) ?? Int.random(in: 1 ..< 15)
+    
+    var parsedColors: [AIColor] = []
+    if let colorArray = product.value(forKey: "colors") as? [NSDictionary] {
+      for colorDict in colorArray {
+        if let hex = colorDict["hexCode"] as? String,
+           let lbl = colorDict["label"] as? String,
+           let dom = colorDict["dominance"] as? Double {
+          parsedColors.append(AIColor(hexCode: hex, label: lbl, dominance: dom))
+        }
+      }
+    }
+    
+    if parsedColors.isEmpty {
+      parsedColors = DemoStore.localColors(for: product.value(forKey: "id") as! Int)
+    }
+    
+    var parsedEmbedding: [Double] = []
+    if let embArray = product.value(forKey: "embedding") as? [Double] {
+      parsedEmbedding = embArray
+    } else {
+      parsedEmbedding = DemoStore.localEmbedding(for: product.value(forKey: "id") as! Int)
+    }
+
     let newProduct = Product(
       id: product.value(forKey: "id") as! Int,
       categoty: product.value(forKey: "category") as! String,
@@ -14,8 +37,8 @@ enum Utils {
       description: product.value(forKey: "description") as! String,
       isPromotion: isPromotion,
       valuePromotion: valuePromotion,
-      colors: DemoStore.localColors(for: product.value(forKey: "id") as! Int),
-      embedding: DemoStore.localEmbedding(for: product.value(forKey: "id") as! Int)
+      colors: parsedColors,
+      embedding: parsedEmbedding
     )
     return newProduct
   }

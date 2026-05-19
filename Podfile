@@ -33,7 +33,10 @@ target 'ShoppingApp' do
     :app_path => react_native_app_path
   )
 
-
+  target 'ShoppingAppWidgetExtension' do
+    inherit! :complete
+    # Pods for testing
+  end
   
   target 'ShoppingAppTests' do
     inherit! :complete

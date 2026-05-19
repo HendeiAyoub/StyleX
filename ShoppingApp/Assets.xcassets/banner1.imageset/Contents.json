@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "banner_shopping_app 2.png",
+      "filename" : "banner_StyleX 2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "banner_shopping_app 1.png",
+      "filename" : "banner_StyleX 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "banner_shopping_app.png",
+      "filename" : "banner_StyleX.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
@@ -21,3 +21,4 @@
     "version" : 1
   }
 }
+
