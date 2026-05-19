@@ -17,31 +17,27 @@ if linkage != nil
   use_frameworks! :linkage => linkage.to_sym
 end
 
-abstract_target 'ShoppingAppAbstract' do
+target 'ShoppingApp' do
+  config = {
+    :reactNativePath => react_native_path
+  }
 
-  target 'ShoppingApp' do
-    config = {
-      :reactNativePath => react_native_path
-    }
+  use_react_native!(
+    :path => config[:reactNativePath],
+    :app_path => react_native_app_path
+  )
 
-    use_react_native!(
-      :path => config[:reactNativePath],
-      :app_path => react_native_app_path
-    )
-
-    target 'ShoppingAppTests' do
-      inherit! :complete
-    end
-
-    target 'ShoppingAppUITests' do
-      inherit! :complete
-    end
-
+  target 'ShoppingAppTests' do
+    inherit! :complete
   end
 
-  target 'ShoppingAppWidgetExtension' do
-    inherit! :search_paths
+  target 'ShoppingAppUITests' do
+    inherit! :complete
   end
+
+  # ShoppingAppWidgetExtension removed — widget extensions have no pod
+  # dependencies and don't need to be declared in the Podfile.
+  # CocoaPods errors on extension targets that lack an explicit host linkage.
 
 end
 
