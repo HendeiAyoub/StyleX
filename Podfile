@@ -34,7 +34,6 @@ target 'ShoppingApp' do
     inherit! :complete
   end
 
-  # ✅ Widget must be INSIDE the parent ShoppingApp target
   target 'ShoppingAppWidgetExtension' do
     inherit! :search_paths
   end
