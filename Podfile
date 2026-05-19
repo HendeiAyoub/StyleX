@@ -3,7 +3,7 @@
 
 # Resolve React Native from the embedded module folder. The repository keeps the
 # native iOS app at the root and the RN package under ShoppingModuleRN.
-react_native_app_path = File.join(__dir__, 'ShoppingModuleRN')
+react_native_app_path = File.join(dir, 'ShoppingModuleRN')
 react_native_node_modules = File.join(react_native_app_path, 'node_modules')
 react_native_path = 'ShoppingModuleRN/node_modules/react-native'
 
@@ -33,10 +33,7 @@ target 'ShoppingApp' do
     :app_path => react_native_app_path
   )
 
-  target 'ShoppingAppWidgetExtension' do
-    inherit! :complete
-    # Pods for testing
-  end
+
   
   target 'ShoppingAppTests' do
     inherit! :complete
