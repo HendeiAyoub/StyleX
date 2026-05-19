@@ -1,4 +1,4 @@
-react_native_app_path = File.join(dir, 'ShoppingModuleRN')
+react_native_app_path = File.join(__dir__, 'ShoppingModuleRN')
 react_native_node_modules = File.join(react_native_app_path, 'node_modules')
 react_native_path = 'ShoppingModuleRN/node_modules/react-native'
 
