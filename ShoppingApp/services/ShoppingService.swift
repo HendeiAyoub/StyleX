@@ -27,16 +27,84 @@ class Shoppingservice {
   }
 
   class func getCategories(completionHandler: @escaping (_ categories: [String]) -> Void) async {
-    // For categories, Supabase REST doesn't have a direct distinct equivalent without RPC.
-    // For now, we will fallback to the local mock categories, but you can wire this to a 'categories' table.
     completionHandler(DemoStore.categories)
+  }
+
+  class func saveUserProfile(name: String, email: String, phone: String, address: String) async -> Bool {
+    // Save locally to UserDefaults first (bulletproof offline fallback)
+    UserDefaults.standard.set(name, forKey: "stylex_user_name")
+    UserDefaults.standard.set(email, forKey: "stylex_user_email")
+    UserDefaults.standard.set(phone, forKey: "stylex_user_phone")
+    UserDefaults.standard.set(address, forKey: "stylex_user_address")
+    UserDefaults.standard.set(true, forKey: "stylex_user_is_logged_in")
+
+    // Sync to Supabase profiles table
+    guard let url = URL(string: "https://kirepwxjgaikqarymwij.supabase.co/rest/v1/profiles") else { return true }
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
+    request.setValue(Config.SUPABASE_ANON_KEY, forHTTPHeaderField: "apikey")
+    request.setValue("Bearer \(Config.SUPABASE_ANON_KEY)", forHTTPHeaderField: "Authorization")
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.setValue("resolution=merge-duplicates", forHTTPHeaderField: "Prefer") // Upsert if supported
+
+    let body: [String: Any] = [
+      "email": email,
+      "name": name,
+      "phone": phone,
+      "address": address
+    ]
+
+    do {
+      let data = try JSONSerialization.data(withJSONObject: body)
+      request.httpBody = data
+      let (_, response) = try await URLSession.shared.data(for: request)
+      if let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) {
+        print("📡 STYLE-X DATABASE INFO: Successfully synced profile for \(name) to Supabase profiles table!")
+        return true
+      }
+    } catch {
+      print("Supabase profile sync error: \(error)")
+    }
+    return true
+  }
+
+  class func sellProduct(id: Int, title: String, category: String, price: Double, description: String, imageUrl: String) async -> Bool {
+    // Sync to Supabase products table
+    guard let url = URL(string: Config.PRODUCTS_STORE_URL) else { return false }
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
+    request.setValue(Config.SUPABASE_ANON_KEY, forHTTPHeaderField: "apikey")
+    request.setValue("Bearer \(Config.SUPABASE_ANON_KEY)", forHTTPHeaderField: "Authorization")
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+    let body: [String: Any] = [
+      "id": id,
+      "category": category,
+      "image": imageUrl,
+      "price": price,
+      "title": title,
+      "description": description
+    ]
+
+    do {
+      let data = try JSONSerialization.data(withJSONObject: body)
+      request.httpBody = data
+      let (_, response) = try await URLSession.shared.data(for: request)
+      if let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) {
+        print("📡 STYLE-X DATABASE INFO: Successfully listed new product \(title) to Supabase!")
+        return true
+      }
+    } catch {
+      print("Supabase product listing error: \(error)")
+    }
+    return false
   }
 }
 
 enum DemoStore {
   static let categories = ["all", "tops", "bottoms", "shoes", "outerwear"]
 
-  static let products: [Product] = [
+  static var products: [Product] = [
     Product(id: 101, categoty: "tops", imageUrl: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=500", price: 39.90, title: "Blue Linen Shirt", description: "Light breathable linen shirt for warm casual days.", isPromotion: true, valuePromotion: 10, colors: [AIColor(hexCode: "#3a5a8c", label: "blue", dominance: 54.7), AIColor(hexCode: "#ffffff", label: "white", dominance: 23.4)], embedding: localEmbedding(for: 101)),
     Product(id: 102, categoty: "tops", imageUrl: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500", price: 24.50, title: "White Cotton Tee", description: "Clean white cotton tee that matches almost every outfit.", isPromotion: false, valuePromotion: 0, colors: [AIColor(hexCode: "#ffffff", label: "white", dominance: 78.0)], embedding: localEmbedding(for: 102)),
     Product(id: 103, categoty: "bottoms", imageUrl: "https://images.unsplash.com/photo-1542272604-787c3835535d?w=500", price: 54.00, title: "Blue Denim Jeans", description: "Classic straight-leg denim jeans for daily wear.", isPromotion: true, valuePromotion: 8, colors: [AIColor(hexCode: "#315f9a", label: "blue", dominance: 61.2)], embedding: localEmbedding(for: 103)),
