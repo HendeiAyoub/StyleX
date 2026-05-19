@@ -77,6 +77,12 @@ struct StyleSuggestion: Codable {
   let styleTip: String
   let bestOccasion: String
   let warning: String
+
+  enum CodingKeys: String, CodingKey {
+    case styleTip = "style_tip"
+    case bestOccasion = "best_occasion"
+    case warning
+  }
 }
 
 struct ChatMessage: Identifiable, Codable, Hashable {
