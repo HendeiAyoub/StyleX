@@ -1,4 +1,4 @@
-react_native_app_path = File.join(__dir__, 'ShoppingModuleRN')
+react_native_app_path = File.join(dir, 'ShoppingModuleRN')
 react_native_node_modules = File.join(react_native_app_path, 'node_modules')
 react_native_path = 'ShoppingModuleRN/node_modules/react-native'
 
@@ -30,12 +30,17 @@ target 'ShoppingApp' do
     inherit! :complete
   end
 
+  target 'ShoppingAppUITests' do
+    inherit! :complete
+  end
+
+  # ✅ Widget must be INSIDE the parent ShoppingApp target
   target 'ShoppingAppWidgetExtension' do
     inherit! :search_paths
   end
+
 end
 
-# ✅ post_install must be OUTSIDE all target blocks
 post_install do |installer|
   react_native_post_install(
     installer,
