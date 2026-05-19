@@ -104,7 +104,7 @@ VALUES
   (158, 'Suede Chukka Boots', 120.00, 'shoes', 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=500', 'Lightweight sandy brown suede Chukka boots.'),
   (159, 'Pima Cotton Henley', 38.00, 'tops', 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=500', 'Premium short-sleeve Pima cotton Henley in clean slate grey.'),
   (160, 'Ribbed Lounge Pants', 48.00, 'bottoms', 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=500', 'Ultra-comfortable high-waisted ribbed lounge knit pants in mocha brown.'),
-  (161, 'Pleated Chiffon Camisole', 34.00, 'tops', 'https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=500', 'Delicate pleated chiffon camisole with adjustable spaghetti straps.'),
+  (161, 'Pleated Chiffon Camisole', 34.00, 'tops', 'https://files.catbox.moe/un3waw.png', 'Delicate pleated chiffon camisole with adjustable spaghetti straps.'),
   (162, 'Tailored Pleated Shorts', 45.00, 'bottoms', 'https://images.unsplash.com/photo-1604176354204-9268737828e4?w=500', 'Sophisticated tailored pleated shorts in clean light beige.'),
   (163, 'Packable Down Jacket', 129.00, 'outerwear', 'https://images.unsplash.com/photo-1544441893-675973e31985?w=500', 'Ultra-lightweight packable down jacket in matte black.'),
   (164, 'Leather Penny Loafers', 98.00, 'shoes', 'https://images.unsplash.com/photo-1560343090-f0409e92791a?w=500', 'Classic full-grain brown leather loafers with hand-stitched detailing.'),
