@@ -17,29 +17,32 @@ if linkage != nil
   use_frameworks! :linkage => linkage.to_sym
 end
 
-target 'ShoppingApp' do
-  config = {
-    :reactNativePath => react_native_path
-  }
+abstract_target 'ShoppingAppAbstract' do
 
-  use_react_native!(
-    :path => config[:reactNativePath],
-    :app_path => react_native_app_path
-  )
+  target 'ShoppingApp' do
+    config = {
+      :reactNativePath => react_native_path
+    }
 
-  target 'ShoppingAppTests' do
-    inherit! :complete
+    use_react_native!(
+      :path => config[:reactNativePath],
+      :app_path => react_native_app_path
+    )
+
+    target 'ShoppingAppTests' do
+      inherit! :complete
+    end
+
+    target 'ShoppingAppUITests' do
+      inherit! :complete
+    end
+
   end
 
-  target 'ShoppingAppUITests' do
-    inherit! :complete
+  target 'ShoppingAppWidgetExtension' do
+    inherit! :search_paths
   end
 
-end
-
-# Widget Extension as a standalone target (NOT nested), with explicit host
-target 'ShoppingAppWidgetExtension' do
-  inherit! :search_paths
 end
 
 post_install do |installer|
