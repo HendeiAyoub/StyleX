@@ -283,6 +283,44 @@ enum StyleDZAIService {
   }
 
   static func personalizedFeed(likedIds: Set<Int>, topN: Int = 4) async -> [Product] {
+    let likedStrList = likedIds.map { String($0) }
+    let body: [String: Any] = [
+      "user_history": likedStrList,
+      "top_n": topN
+    ]
+    
+    guard let url = URL(string: Config.STYLE_DZ_AI_BASE_URL + "/ai/recommend"),
+          let data = try? JSONSerialization.data(withJSONObject: body) else {
+      return fallbackPersonalizedFeed(likedIds: likedIds, topN: topN)
+    }
+    
+    var request = URLRequest(url: url, timeoutInterval: Config.AI_TIMEOUT_SECONDS)
+    request.httpMethod = "POST"
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.httpBody = data
+    
+    do {
+      let (responseData, response) = try await URLSession.shared.data(for: request)
+      if let http = response as? HTTPURLResponse, (200 ..< 300).contains(http.statusCode) {
+        if let json = try JSONSerialization.jsonObject(with: responseData) as? [String: Any],
+           let recommendationRows = json["recommendations"] as? [[String: Any]] {
+          let ids: [Int] = recommendationRows.compactMap { row in
+            if let intId = row["product_id"] as? Int { return intId }
+            if let stringId = row["product_id"] as? String { return Int(stringId) }
+            return nil
+          }
+          let mapped = ids.compactMap { DemoStore.product(id: $0) }
+          if !mapped.isEmpty { return mapped }
+        }
+      }
+    } catch {
+      print("Error calling /ai/recommend: \(error)")
+    }
+    
+    return fallbackPersonalizedFeed(likedIds: likedIds, topN: topN)
+  }
+  
+  private static func fallbackPersonalizedFeed(likedIds: Set<Int>, topN: Int) -> [Product] {
     let liked = DemoStore.products.filter { likedIds.contains($0.id) }
     if liked.isEmpty { return Array(DemoStore.products.prefix(topN)) }
     return Array(DemoStore.products.filter { !likedIds.contains($0.id) }.prefix(topN))
@@ -299,16 +337,96 @@ enum StyleDZAIService {
   }
 
   static func styleSuggestion(for product: Product, likedIds: Set<Int>) async -> StyleSuggestion {
+    let wardrobeProducts = DemoStore.products.filter { likedIds.contains($0.id) }
+    let wardrobeDicts = wardrobeProducts.map { productToWardrobeDict($0) }
+    
+    let body: [String: Any] = [
+      "wardrobe": wardrobeDicts,
+      "candidate_product_id": String(product.id)
+    ]
+    
+    guard let url = URL(string: Config.STYLE_DZ_AI_BASE_URL + "/get-style-suggestion"),
+          let data = try? JSONSerialization.data(withJSONObject: body) else {
+      return fallbackStyleSuggestion(for: product, likedIds: likedIds)
+    }
+    
+    var request = URLRequest(url: url, timeoutInterval: Config.AI_TIMEOUT_SECONDS)
+    request.httpMethod = "POST"
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.httpBody = data
+    
+    do {
+      let (responseData, response) = try await URLSession.shared.data(for: request)
+      if let http = response as? HTTPURLResponse, (200 ..< 300).contains(http.statusCode) {
+        if let json = try JSONSerialization.jsonObject(with: responseData) as? [String: Any],
+           let suggestionDict = json["suggestion"] as? [String: Any] {
+          let suggestionData = try JSONSerialization.data(withJSONObject: suggestionDict)
+          let decoder = JSONDecoder()
+          let suggestion = try decoder.decode(StyleSuggestion.self, from: suggestionData)
+          return suggestion
+        }
+      }
+    } catch {
+      print("Error calling /get-style-suggestion: \(error)")
+    }
+    
+    return fallbackStyleSuggestion(for: product, likedIds: likedIds)
+  }
+  
+  private static func fallbackStyleSuggestion(for product: Product, likedIds: Set<Int>) -> StyleSuggestion {
     let likedNames = DemoStore.products.filter { likedIds.contains($0.id) }.map(\.title).joined(separator: ", ")
-    let fallback = StyleSuggestion(
+    return StyleSuggestion(
       styleTip: "Pair \(product.title) with \(likedNames.isEmpty ? "a clean neutral basic" : likedNames) for a balanced demo outfit.",
       bestOccasion: "Casual school presentation, daily city wear, or a relaxed coffee outing.",
       warning: "Avoid adding too many strong colors at once; keep one item as the visual focus."
     )
-    return fallback
   }
 
   static func chatReply(message: String, history: [ChatMessage]) async -> ChatMessage {
+    let historyDicts = history.map { msg in
+      [
+        "role": msg.role,
+        "content": msg.content
+      ]
+    }
+    
+    let body: [String: Any] = [
+      "message": message,
+      "chat_history": historyDicts
+    ]
+    
+    guard let url = URL(string: Config.STYLE_DZ_AI_BASE_URL + "/ai/chat"),
+          let data = try? JSONSerialization.data(withJSONObject: body) else {
+      return await fallbackChatReply(message: message, history: history)
+    }
+    
+    var request = URLRequest(url: url, timeoutInterval: Config.AI_TIMEOUT_SECONDS * 3)
+    request.httpMethod = "POST"
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.httpBody = data
+    
+    do {
+      let (responseData, response) = try await URLSession.shared.data(for: request)
+      if let http = response as? HTTPURLResponse, (200 ..< 300).contains(http.statusCode) {
+        if let json = try JSONSerialization.jsonObject(with: responseData) as? [String: Any] {
+          let responseText = (json["response_text"] as? String) ?? "Sorry, no response from styling assistant."
+          let stringIds = (json["recommended_product_ids"] as? [Any]) ?? []
+          let ids: [Int] = stringIds.compactMap { idVal in
+            if let intVal = idVal as? Int { return intVal }
+            if let strVal = idVal as? String { return Int(strVal) }
+            return nil
+          }
+          return ChatMessage(role: "assistant", content: responseText, recommendedProductIds: ids)
+        }
+      }
+    } catch {
+      print("Error calling /ai/chat: \(error)")
+    }
+    
+    return await fallbackChatReply(message: message, history: history)
+  }
+  
+  private static func fallbackChatReply(message: String, history: [ChatMessage]) async -> ChatMessage {
     let results = await semanticSearch(query: message, category: nil, topN: 2)
     let ids = results.prefix(2).map(\.id)
     let names = results.prefix(2).map(\.title).joined(separator: " and ")
@@ -316,6 +434,21 @@ enum StyleDZAIService {
       ? "I would keep the outfit simple and build around neutral basics from the local demo catalog."
       : "For that request, I would start with \(names). The combination keeps the outfit easy to explain and visually clear for the demo."
     return ChatMessage(role: "assistant", content: response, recommendedProductIds: ids)
+  }
+  
+  private static func productToWardrobeDict(_ product: Product) -> [String: Any] {
+    let colorsList = product.colors.map { color in
+      [
+        "color_label": color.label,
+        "hex_code": color.hexCode,
+        "dominance_percentage": color.dominance
+      ] as [String: Any]
+    }
+    return [
+      "product_name": product.title,
+      "category": product.category,
+      "colors": colorsList
+    ]
   }
 
   private static func localRecommendations(for product: Product, topN: Int) -> [Product] {
