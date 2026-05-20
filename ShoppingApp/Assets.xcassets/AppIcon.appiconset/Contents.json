@@ -1,12 +1,6 @@
 {
   "images" : [
     {
-      "filename" : "StyleX-icon.png",
-      "idiom" : "universal",
-      "platform" : "ios",
-      "size" : "1024x1024"
-    },
-    {
       "filename" : "StyleX-icon-16x16.png",
       "idiom" : "mac",
       "scale" : "1x",
