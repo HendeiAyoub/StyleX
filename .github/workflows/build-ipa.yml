@@ -1,0 +1,115 @@
+name: Build IPA
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install JS Dependencies
+        run: |
+          cd ShoppingModuleRN
+          npm install
+
+      - name: Install CocoaPods
+        run: pod install
+
+      - name: Install Certificate
+        env:
+          P12_BASE64: ${{ secrets.CERTIFICATE_P12 }}
+          P12_PASSWORD: ${{ secrets.CERTIFICATE_PASSWORD }}
+        run: |
+          CERTIFICATE_PATH=$RUNNER_TEMP/certificate.p12
+          echo "$P12_BASE64" | base64 --decode > $CERTIFICATE_PATH
+          security create-keychain -p "${{ secrets.KEYCHAIN_PASSWORD }}" build.keychain
+          security import $CERTIFICATE_PATH -k build.keychain -P "$P12_PASSWORD" -A
+          security list-keychains -s build.keychain
+          security default-keychain -s build.keychain
+          security unlock-keychain -p "${{ secrets.KEYCHAIN_PASSWORD }}" build.keychain
+          security set-keychain-settings -t 3600 -u build.keychain
+
+      - name: Install Provisioning Profile
+        env:
+          PROVISION_BASE64: ${{ secrets.PROVISIONING_PROFILE }}
+        run: |
+          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+          echo "$PROVISION_BASE64" | base64 --decode > \
+            ~/Library/MobileDevice/Provisioning\ Profiles/profile.mobileprovision
+          mkdir -p ~/Library/Developer/Xcode/UserData/Provisioning\ Profiles
+          echo "$PROVISION_BASE64" | base64 --decode > \
+            ~/Library/Developer/Xcode/UserData/Provisioning\ Profiles/profile.mobileprovision
+
+      - name: Force Automatic Signing
+        run: |
+          sed -i '' 's/CODE_SIGN_STYLE = Manual;/CODE_SIGN_STYLE = Automatic;/g' \
+            ShoppingApp.xcodeproj/project.pbxproj
+
+      - name: Patch Bundle ID and Team
+        run: |
+          sed -i '' 's/ml\.ShoppingApp\.ShoppingAppWidget/com.stylix.tryon.widget/g' \
+            ShoppingApp.xcodeproj/project.pbxproj
+          sed -i '' 's/ml\.ShoppingApp/com.stylix.tryon/g' \
+            ShoppingApp.xcodeproj/project.pbxproj
+          sed -i '' 's/DEVELOPMENT_TEAM = J38J9AUL72;/DEVELOPMENT_TEAM = 39Z5QDFQQG;/g' \
+            ShoppingApp.xcodeproj/project.pbxproj
+          sed -i '' 's/DEVELOPMENT_TEAM = 6DZRWX4XK8;/DEVELOPMENT_TEAM = 39Z5QDFQQG;/g' \
+            ShoppingApp.xcodeproj/project.pbxproj
+
+      - name: Remove Widget From Build
+        run: python3 .github/scripts/fix_widget.py
+
+      - name: Verify widget dependency removed
+        run: |
+            echo "Remaining widget references:"
+            grep -n "ShoppingAppWidgetExtension" ShoppingApp.xcodeproj/project.pbxproj || echo "NONE - widget fully removed"
+            plutil -lint ShoppingApp.xcodeproj/project.pbxproj && echo "pbxproj is VALID"
+
+      - name: Remove Wallet Capability
+        run: |
+          sed -i '' '/com.apple.developer.pass-type-identifiers/,/\/array/d' \
+            ShoppingApp/ShoppingApp.entitlements || true
+          sed -i '' '/com.apple.wallet/d' \
+            ShoppingApp/ShoppingApp.entitlements || true
+
+      - name: Fix NSBundle Swift Error
+        run: |
+          sed -i '' 's/NSBundle\.main/Bundle.main/g' \
+            ShoppingApp/managers/BridgeManager.swift
+
+      - name: Unlock Keychain
+        run: |
+          security unlock-keychain -p "${{ secrets.KEYCHAIN_PASSWORD }}" build.keychain
+          security set-key-partition-list -S apple-tool:,apple: -s -k "${{ secrets.KEYCHAIN_PASSWORD }}" build.keychain
+
+      - name: Build & Archive
+        run: |
+          xcodebuild \
+            -workspace ShoppingApp.xcworkspace \
+            -scheme ShoppingApp \
+            -configuration Release \
+            -destination generic/platform=iOS \
+            CODE_SIGN_STYLE=Automatic \
+            DEVELOPMENT_TEAM=39Z5QDFQQG \
+            -allowProvisioningUpdates \
+            archive \
+            -archivePath $RUNNER_TEMP/app.xcarchive
+        env:
+          CODESIGN_ALLOCATE: /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/codesign_allocate
+
+      - name: Export IPA
+        run: |
+          xcodebuild \
+            -exportArchive \
+            -archivePath $RUNNER_TEMP/app.xcarchive \
+            -exportPath $RUNNER_TEMP/ipa \
+            -exportOptionsPlist ExportOptions.plist
+
+      - name: Upload IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: ShoppingApp-IPA
+          path: ${{ runner.temp }}/ipa/*.ipa

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18E990B2C7B1EBE8EDF2FD73 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736819C518DA238A603EF245 /* LogoView.swift */; };
 		3F2367EB2C1B555400B1F054 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2367EA2C1B555400B1F054 /* AppDelegate.swift */; };
 		3F2367EC2C1B923E00B1F054 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 3F2367E92C1B552900B1F054 /* main.jsbundle */; };
 		3F2367F32C1BBD0000B1F054 /* BottomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2367F22C1BBD0000B1F054 /* BottomTabView.swift */; };
@@ -46,18 +47,9 @@
 		3FB2352C2C1626BC00E2AAF1 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB2352B2C1626BC00E2AAF1 /* constants.swift */; };
 		3FEF43AD2C1E4AC900F3A1B2 /* ProductItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEF43AC2C1E4AC900F3A1B2 /* ProductItem.swift */; };
 		A7264287962B5CD415461355 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 84265438F840CA3C41E5761C /* PrivacyInfo.xcprivacy */; };
-		3F9DF35B2C28FA4700AB9E98 /* ParameterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9DF3592C28FA4700AB9E98 /* ParameterView.swift */; };
-		3F9DF35C2C28FA4700AB9E98 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9DF35A2C28FA4700AB9E98 /* ProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		3F23680C2C1D4A3C00B1F054 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3FB234E22C13BB5A00E2AAF1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3F2367FA2C1D4A3900B1F054;
-			remoteInfo = ShoppingAppWidgetExtension;
-		};
 		3FB235012C13BB5C00E2AAF1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3FB234E22C13BB5A00E2AAF1 /* Project object */;
@@ -73,19 +65,6 @@
 			remoteInfo = ShoppingApp;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		3F23680F2C1D4A3D00B1F054 /* Embed Foundation Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-			);
-			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		17870C7B856396561F9DC364 /* libPods-ShoppingApp-ShoppingAppWidgetExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ShoppingApp-ShoppingAppWidgetExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,9 +124,8 @@
 		3FB2352B2C1626BC00E2AAF1 /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		3FDA48882C166B9000EA4A1D /* LaunchView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchView.storyboard; sourceTree = "<group>"; };
 		3FEF43AC2C1E4AC900F3A1B2 /* ProductItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItem.swift; sourceTree = "<group>"; };
-		3F9DF3592C28FA4700AB9E98 /* ParameterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterView.swift; sourceTree = "<group>"; };
-		3F9DF35A2C28FA4700AB9E98 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		472C2A7BCF5C4E0831B371A3 /* Pods-ShoppingApp-ShoppingAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingApp-ShoppingAppTests.debug.xcconfig"; path = "Target Support Files/Pods-ShoppingApp-ShoppingAppTests/Pods-ShoppingApp-ShoppingAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		736819C518DA238A603EF245 /* LogoView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
 		84265438F840CA3C41E5761C /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = ../PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		94CE59B6268BB0CB0CEF298B /* Pods-ShoppingApp-ShoppingAppWidgetExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingApp-ShoppingAppWidgetExtension.debug.xcconfig"; path = "Target Support Files/Pods-ShoppingApp-ShoppingAppWidgetExtension/Pods-ShoppingApp-ShoppingAppWidgetExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		AAA3726B74CE091F60A025C5 /* Pods-ShoppingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingApp.debug.xcconfig"; path = "Target Support Files/Pods-ShoppingApp/Pods-ShoppingApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -265,6 +243,7 @@
 				3F7AA2372C180D0E00C6AA7D /* CartIcon.swift */,
 				3F2367F42C1BD95000B1F054 /* CartTotal.swift */,
 				3FEF43AC2C1E4AC900F3A1B2 /* ProductItem.swift */,
+				736819C518DA238A603EF245 /* LogoView.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -409,8 +388,6 @@
 				3F7AA2392C18BA0300C6AA7D /* ModuleViewController.swift */,
 				3F7AA23B2C18BC2600C6AA7D /* ModuleViewControllerWrapper.swift */,
 				3F7AA23D2C18BC9500C6AA7D /* Module.storyboard */,
-				3F9DF3592C28FA4700AB9E98 /* ParameterView.swift */,
-				3F9DF35A2C28FA4700AB9E98 /* ProfileView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -695,8 +672,7 @@
 				3F2367EB2C1B555400B1F054 /* AppDelegate.swift in Sources */,
 				3F7AA2302C17CB4F00C6AA7D /* Methods.swift in Sources */,
 				3F7AA2292C17C9A700C6AA7D /* BannerPromotion.swift in Sources */,
-				3F9DF35B2C28FA4700AB9E98 /* ParameterView.swift in Sources */,
-				3F9DF35C2C28FA4700AB9E98 /* ProfileView.swift in Sources */,
+				18E990B2C7B1EBE8EDF2FD73 /* LogoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
