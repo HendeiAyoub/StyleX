@@ -94,19 +94,17 @@ jobs:
             -destination generic/platform=iOS \
             CODE_SIGN_STYLE=Automatic \
             DEVELOPMENT_TEAM=39Z5QDFQQG \
+            ASSETCATALOG_COMPILER_SKIP_APP_STORE_DEPLOYMENT=YES \
             -allowProvisioningUpdates \
             archive \
             -archivePath $RUNNER_TEMP/app.xcarchive
-        env:
-          CODESIGN_ALLOCATE: /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/codesign_allocate
-
-      - name: Export IPA
-        run: |
-          xcodebuild \
-            -exportArchive \
-            -archivePath $RUNNER_TEMP/app.xcarchive \
-            -exportPath $RUNNER_TEMP/ipa \
-            -exportOptionsPlist ExportOptions.plist
+            - name: Export IPA
+              run: |
+                xcodebuild \
+                  -exportArchive \
+                  -archivePath $RUNNER_TEMP/app.xcarchive \
+                  -exportPath $RUNNER_TEMP/ipa \
+                  -exportOptionsPlist ExportOptions.plist
 
       - name: Upload IPA
         uses: actions/upload-artifact@v4
