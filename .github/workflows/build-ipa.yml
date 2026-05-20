@@ -64,9 +64,9 @@ jobs:
 
       - name: Verify widget dependency removed
         run: |
-            echo "Remaining widget references:"
-            grep -n "ShoppingAppWidgetExtension" ShoppingApp.xcodeproj/project.pbxproj || echo "NONE - widget fully removed"
-            plutil -lint ShoppingApp.xcodeproj/project.pbxproj && echo "pbxproj is VALID"
+          echo "Remaining widget references:"
+          grep -n "ShoppingAppWidgetExtension" ShoppingApp.xcodeproj/project.pbxproj || echo "NONE - widget fully removed"
+          plutil -lint ShoppingApp.xcodeproj/project.pbxproj && echo "pbxproj is VALID"
 
       - name: Remove Wallet Capability
         run: |
@@ -98,6 +98,7 @@ jobs:
             -allowProvisioningUpdates \
             archive \
             -archivePath $RUNNER_TEMP/app.xcarchive
+
       - name: Export IPA
         run: |
           xcodebuild \
@@ -105,3 +106,13 @@ jobs:
             -archivePath $RUNNER_TEMP/app.xcarchive \
             -exportPath $RUNNER_TEMP/ipa \
             -exportOptionsPlist ExportOptions.plist
+
+      - name: Check Export Output
+        run: ls -la $RUNNER_TEMP/ipa/
+
+      - name: Upload IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: ShoppingApp-IPA
+          path: ${{ runner.temp }}/ipa/*.ipa
+          if-no-files-found: error
